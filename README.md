@@ -38,3 +38,7 @@ Each round offers three distinct events. Setup requires a pool of at least three
 All discoveries and attempts save immediately, including wrong answers. Unsaved text inside a year input is not persisted. Clearing browser data removes progress. The bundled catalog is visible to the browser and is not designed for competitive anti-cheat.
 
 The latest agreed scope is saved in `CHRONOQUEST_SCOPE.md` and referenced by `AGENTS.md`. Backend, authentication, multiplayer and other expansions are deferred. Image origins and licenses are stored in `lib/data/image-catalog.json` and shown on event detail pages.
+## GitHub Pages
+
+The Pages workflow publishes the static `out/` build on pushes to `main`.
+Use the public repository `tranngochuyc-cyber.github.io` for root hosting (the current configuration uses root asset URLs). In Settings > Pages, select GitHub Actions as the source. The intended address is https://tranngochuyc-cyber.github.io/; it is not live until the deployment succeeds. A project repository hosted under a subdirectory requires a base-path configuration before deployment.
