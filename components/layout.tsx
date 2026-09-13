@@ -19,12 +19,12 @@ export function Navbar() {
         {APP_NAME}
         <span className="brand-dot">.</span>
       </Link>
-      <nav aria-label="Main navigation">
+      <nav aria-label="Điều hướng chính">
         {[
-          ["/", "Explore", Compass],
-          ["/play", "Play", Play],
-          ["/archive", "Archive", Library],
-          ["/stats", "Stats", ChartNoAxesColumn],
+          ["/", "Khám phá", Compass],
+          ["/play", "Chơi", Play],
+          ["/archive", "Bộ sưu tập", Library],
+          ["/stats", "Thống kê", ChartNoAxesColumn],
         ].map(([href, label, Icon]) => (
           <Link
             key={String(href)}
@@ -38,7 +38,7 @@ export function Navbar() {
         ))}
       </nav>
       <Link href="/play" className="nav-cta">
-        Begin a journey <ArrowUpRight size={16} />
+        Bắt đầu hành trình <ArrowUpRight size={16} />
       </Link>
     </header>
   );
@@ -50,9 +50,9 @@ export function Footer() {
         <Hourglass size={18} />
         {APP_NAME}
       </Link>
-      <span>The past is a world worth exploring.</span>
+      <span>Quá khứ là một thế giới đáng khám phá.</span>
       <Link href="/about">
-        About & how to play <ArrowUpRight size={14} />
+        Giới thiệu và cách chơi <ArrowUpRight size={14} />
       </Link>
     </footer>
   );

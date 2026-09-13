@@ -1,5 +1,5 @@
 import { Setup } from "@/components/game/setup";
-export const metadata = { title: "Plan your journey" };
+export const metadata = { title: "Tạo hành trình" };
 export default function Page() {
   return (
     <main id="main" className="page-shell">

@@ -4,15 +4,15 @@ import { AppProvider } from "@/components/providers";
 import { Navbar, Footer } from "@/components/layout";
 export const metadata: Metadata = {
   title: {
-    default: "ChronoQuest — Explore history",
+    default: "ChronoQuest — Khám phá lịch sử",
     template: "%s | ChronoQuest",
   },
   description:
-    "Three events. One choice. Explore world history, test your knowledge, and build your personal archive.",
+    "Ba sự kiện. Một lựa chọn. Khám phá lịch sử thế giới, thử tài kiến thức và xây dựng bộ sưu tập riêng.",
   icons: { icon: "/favicon.svg" },
   openGraph: {
     title: "ChronoQuest",
-    description: "Explore history. One event at a time.",
+    description: "Khám phá lịch sử qua từng sự kiện.",
     type: "website",
   },
 };
@@ -22,11 +22,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
+    <html lang="vi">
       <body>
         <AppProvider>
           <a className="skip-link" href="#main">
-            Skip to content
+            Đến nội dung chính
           </a>
           <Navbar />
           {children}

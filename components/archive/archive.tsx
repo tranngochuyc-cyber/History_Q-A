@@ -22,7 +22,7 @@ export function Archive() {
   const matching = filterEvents(events, filters).filter(
     (e) =>
       `${e.title} ${e.shortSummary} ${e.locationText}`
-        .toLowerCase()
+        .toLocaleLowerCase("vi-VN")
         .includes(search.toLowerCase()) &&
       (status === "all" ||
         (status === "discovered"
@@ -39,11 +39,11 @@ export function Archive() {
     <>
       <div className="page-heading archive-heading">
         <div>
-          <div className="eyebrow">THE CHRONOQUEST COLLECTION</div>
-          <h1>A world worth remembering.</h1>
+          <div className="eyebrow">BỘ SƯU TẬP CHRONOQUEST</div>
+          <h1>Một thế giới đáng ghi nhớ.</h1>
           <p>
-            Explore the full collection. Play a journey to make these stories
-            part of your personal archive.
+            Khám phá toàn bộ sự kiện. Hoàn thành câu hỏi để lưu những câu chuyện
+            vào bộ sưu tập cá nhân.
           </p>
         </div>
         <div className="collection-counter">
@@ -52,7 +52,7 @@ export function Archive() {
             {ready ? data.discovered.length : "—"}{" "}
             <span>/ {events.length}</span>
           </strong>
-          <span>EVENTS DISCOVERED</span>
+          <span>SỰ KIỆN ĐÃ KHÁM PHÁ</span>
         </div>
       </div>
       <div className="progress-track">
@@ -66,8 +66,8 @@ export function Archive() {
         <label className="search-box">
           <Search size={18} />
           <input
-            placeholder="Search the archive…"
-            aria-label="Search the archive"
+            placeholder="Tìm trong bộ sưu tập…"
+            aria-label="Tìm trong bộ sưu tập"
             value={search}
             onChange={(e) => {
               setSearch(e.target.value);
@@ -81,7 +81,7 @@ export function Archive() {
           aria-controls="archive-filters"
           onClick={() => setShowFilters(!showFilters)}
         >
-          <SlidersHorizontal size={16} /> Filters{" "}
+          <SlidersHorizontal size={16} /> Bộ lọc{" "}
           {activeCount > 0 && `(${activeCount})`}
         </button>
       </div>
@@ -99,16 +99,16 @@ export function Archive() {
             className="text-link"
             onClick={() => setFilters({ ...DEFAULT_SETTINGS })}
           >
-            Reset filters
+            Đặt lại bộ lọc
           </button>
         </div>
       )}
       <div className="archive-tabs">
         <div className="chips">
           {[
-            ["all", "All events"],
-            ["discovered", "Discovered"],
-            ["undiscovered", "Undiscovered"],
+            ["all", "Tất cả sự kiện"],
+            ["discovered", "Đã khám phá"],
+            ["undiscovered", "Chưa khám phá"],
           ].map(([id, label]) => (
             <button
               className={`chip ${status === id ? "selected" : ""}`}
@@ -123,7 +123,7 @@ export function Archive() {
             </button>
           ))}
         </div>
-        <span>{matching.length} events</span>
+        <span>{matching.length} sự kiện</span>
       </div>
       {matching.length ? (
         <>
@@ -140,7 +140,7 @@ export function Archive() {
           {matching.length > limit && (
             <div className="load-more">
               <button className="button" onClick={() => setLimit(limit + 12)}>
-                Load more events ({matching.length - limit} remaining)
+                Xem thêm sự kiện ({matching.length - limit} còn lại)
               </button>
             </div>
           )}
@@ -148,11 +148,11 @@ export function Archive() {
       ) : (
         <div className="empty-state">
           <Library size={40} />
-          <h2>No historical events match.</h2>
+          <h2>Không có sự kiện phù hợp.</h2>
           <p>
             {status === "discovered" && !data.discovered.length
-              ? "Your collection begins with your first journey."
-              : "Try removing one or more filters."}
+              ? "Bộ sưu tập bắt đầu từ hành trình đầu tiên của bạn."
+              : "Hãy thử bỏ bớt bộ lọc."}
           </p>
           <button
             className="button"
@@ -162,7 +162,7 @@ export function Archive() {
               setStatus("all");
             }}
           >
-            Reset filters
+            Đặt lại bộ lọc
           </button>
         </div>
       )}

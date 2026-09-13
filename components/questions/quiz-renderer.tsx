@@ -1,4 +1,5 @@
 "use client";
+import { vi } from "@/lib/i18n";
 import { useState } from "react";
 import { ArrowRight, Check, X } from "lucide-react";
 import type { Question } from "@/lib/types";
@@ -17,7 +18,7 @@ export function QuizRenderer({
   return (
     <div className="quiz-panel reveal">
       <div className="eyebrow">
-        {question.type.replace("-", " ")} · {question.difficulty}
+        {vi(question.type)} · {vi(question.difficulty)}
       </div>
       <h2>{question.prompt}</h2>
       {question.type === "year" ? (
@@ -25,10 +26,10 @@ export function QuizRenderer({
       ) : question.type === "true-false" ? (
         <div className="answer-options binary">
           <button onClick={() => onAnswer(true)}>
-            <Check size={20} /> True
+            <Check size={20} /> Đúng
           </button>
           <button onClick={() => onAnswer(false)}>
-            <X size={20} /> False
+            <X size={20} /> Sai
           </button>
         </div>
       ) : (
@@ -42,7 +43,7 @@ export function QuizRenderer({
           ))}
         </div>
       )}
-      <p className="quiz-note">Take your time. There is no timer.</p>
+      <p className="quiz-note">Cứ thong thả. Không giới hạn thời gian.</p>
     </div>
   );
 }
@@ -63,7 +64,7 @@ function YearGuess({ onAnswer }: { onAnswer: (v: number) => void }) {
       }}
     >
       <label className="year-label" htmlFor="year">
-        Your year
+        Năm bạn dự đoán
       </label>
       <input
         className="year-input"
@@ -72,18 +73,18 @@ function YearGuess({ onAnswer }: { onAnswer: (v: number) => void }) {
         min={-5000}
         max={2100}
         step={1}
-        placeholder="e.g. 1868"
+        placeholder="Ví dụ: 1868"
         value={year}
         onChange={(e) => setYear(e.target.value)}
         aria-describedby="year-help"
       />
       <p id="year-help">
-        Use negative numbers for BCE (−221 = 221 BCE). There is no year zero.
+        Nhập số âm cho năm trước Công nguyên (−221 = 221 TCN). Không có năm 0.
         <br />
-        Exact: 100 base points · within 5 years: 70 · within 10: 40
+        Chính xác: 100 điểm cơ bản · lệch tối đa 5 năm: 70 · tối đa 10 năm: 40
       </p>
       <button className="button primary" disabled={!valid}>
-        Confirm year <ArrowRight size={18} />
+        Xác nhận năm <ArrowRight size={18} />
       </button>
     </form>
   );

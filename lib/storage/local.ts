@@ -104,10 +104,11 @@ function hydrate() {
       if (parsed) data = parsed;
       else
         warning =
-          "The saved journey could not be read. A fresh archive is ready.";
+          "Không đọc được hành trình đã lưu. Bộ sưu tập mới đã sẵn sàng.";
     }
   } catch {
-    warning = "Local storage is unavailable. Progress is kept for this visit.";
+    warning =
+      "Không thể lưu trên thiết bị. Tiến trình chỉ được giữ trong lần truy cập này.";
   }
   snapshot = { data, ready: true, warning };
   emit();
@@ -129,7 +130,7 @@ export function updateProgress(fn: (p: Progress) => Progress) {
   try {
     localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
   } catch {
-    warning = "Your browser could not save progress. Keep this tab open.";
+    warning = "Trình duyệt không lưu được tiến trình. Hãy giữ tab này mở.";
   }
   snapshot = { data, ready: true, warning };
   emit();

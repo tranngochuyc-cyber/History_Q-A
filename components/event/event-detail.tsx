@@ -1,4 +1,5 @@
 "use client";
+import { vi } from "@/lib/i18n";
 import Link from "next/link";
 import {
   ArrowLeft,
@@ -19,23 +20,23 @@ export function EventDetail({ event }: { event: HistoricalEvent }) {
   return (
     <>
       <Link className="text-link back-link" href="/archive">
-        <ArrowLeft size={16} /> Back to archive
+        <ArrowLeft size={16} /> Về bộ sưu tập
       </Link>
       <div className="detail-hero">
         <div>
           <div className="eyebrow">
-            ARCHIVAL RECORD / {event.era.toUpperCase()}
+            HỒ SƠ LỊCH SỬ / {vi(event.era).toUpperCase()}
           </div>
           <h1>{event.title}</h1>
           <EventMeta event={event} />
           <p>{event.shortSummary}</p>
           <div className="chips">
             {event.categories.map((c) => (
-              <span className="tag" key={c}>
-                {c}
+              <span className="tag" key={vi(c)}>
+                {vi(c)}
               </span>
             ))}
-            <span className="tag">{event.scale}</span>
+            <span className="tag">{vi(event.scale)}</span>
           </div>
         </div>
         <EventImage event={event} />
@@ -53,9 +54,9 @@ export function EventDetail({ event }: { event: HistoricalEvent }) {
       <div className="detail-layout">
         <article>
           {[
-            ["The context", event.causes],
-            ["What happened", event.whatHappened],
-            ["What changed", event.consequences],
+            ["Bối cảnh", event.causes],
+            ["Diễn biến", event.whatHappened],
+            ["Tác động", event.consequences],
           ].map(([title, text]) => (
             <section key={title}>
               <div className="eyebrow">{title.toUpperCase()}</div>
@@ -64,8 +65,8 @@ export function EventDetail({ event }: { event: HistoricalEvent }) {
             </section>
           ))}
           <section className="sources">
-            <h2>Follow the sources.</h2>
-            <p>Read further and consider the context behind each account.</p>
+            <h2>Tìm hiểu từ nguồn tư liệu.</h2>
+            <p>Đọc thêm và tìm hiểu bối cảnh của từng nguồn tư liệu.</p>
             {event.sources.map((s) => (
               <a href={s.url} target="_blank" rel="noreferrer" key={s.url}>
                 <BookOpen size={18} />
@@ -79,15 +80,15 @@ export function EventDetail({ event }: { event: HistoricalEvent }) {
           </section>
         </article>
         <aside className="record-sidebar">
-          <div className="eyebrow">RECORD DETAILS</div>
+          <div className="eyebrow">CHI TIẾT SỰ KIỆN</div>
           <dl>
-            <dt>Date</dt>
+            <dt>Niên đại</dt>
             <dd>
               {event.id === "great-wave"
-                ? "c. 1830–1832"
+                ? "Khoảng 1830–1832"
                 : event.startDate && event.startYear > 0
                   ? new Date(`${event.startDate}T12:00:00Z`).toLocaleDateString(
-                      "en-GB",
+                      "vi-VN",
                       {
                         day: "numeric",
                         month: "long",
@@ -97,35 +98,35 @@ export function EventDetail({ event }: { event: HistoricalEvent }) {
                     )
                   : `${formatYear(event.startYear)}${event.endYear !== event.startYear ? ` – ${formatYear(event.endYear)}` : ""}`}
             </dd>
-            <dt>Location</dt>
+            <dt>Địa điểm</dt>
             <dd>{event.locationText}</dd>
-            <dt>Key figures</dt>
+            <dt>Nhân vật tiêu biểu</dt>
             <dd>
               {event.keyFigures.length
                 ? event.keyFigures.join(" · ")
-                : "A collective historical experience"}
+                : "Sự kiện gắn với nhiều cộng đồng"}
             </dd>
           </dl>
           <div className="mastery">
             <h3>
               {discovered ? (
                 <>
-                  <Check size={17} /> In your archive
+                  <Check size={17} /> Đã có trong bộ sưu tập
                 </>
               ) : (
                 <>
-                  <LockKeyhole size={17} /> Ready to discover
+                  <LockKeyhole size={17} /> Sẵn sàng khám phá
                 </>
               )}
             </h3>
-            <p>{progress.completed} distinct questions completed</p>
+            <p>{progress.completed} câu hỏi khác nhau đã hoàn thành</p>
             <strong>{progress.accuracy}%</strong>
-            <span>answer accuracy · {progress.total} attempts</span>
+            <span>độ chính xác · {progress.total} lượt trả lời</span>
             <div className="progress-track">
               <div style={{ width: `${progress.accuracy}%` }} />
             </div>
             <Link className="button primary full" href="/play">
-              Explore through play <ArrowUpRight size={16} />
+              Khám phá qua trò chơi <ArrowUpRight size={16} />
             </Link>
           </div>
         </aside>
@@ -133,8 +134,8 @@ export function EventDetail({ event }: { event: HistoricalEvent }) {
       <section className="related-section">
         <div className="section-heading">
           <div>
-            <div className="eyebrow">CONNECTED CHAPTERS</div>
-            <h2>History doesn’t happen alone.</h2>
+            <div className="eyebrow">NHỮNG CÂU CHUYỆN LIÊN QUAN</div>
+            <h2>Lịch sử luôn có những mối liên hệ.</h2>
           </div>
         </div>
         <div className="event-grid">

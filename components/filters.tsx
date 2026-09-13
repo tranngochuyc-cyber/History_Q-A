@@ -1,4 +1,5 @@
 "use client";
+import { vi, searchText } from "@/lib/i18n";
 import { useState } from "react";
 import { Search, X, Globe2 } from "lucide-react";
 import { CATEGORIES, ERAS } from "@/lib/config";
@@ -30,12 +31,12 @@ export function FilterPanel({
       {items.map((item) => (
         <button
           type="button"
-          key={item}
+          key={vi(item)}
           className={`chip ${value[key].includes(item) ? "selected" : ""}`}
           aria-pressed={value[key].includes(item)}
           onClick={() => toggle(key, item)}
         >
-          {item}
+          {vi(item)}
         </button>
       ))}
     </div>
@@ -44,9 +45,9 @@ export function FilterPanel({
     <div className={`filters ${compact ? "compact" : ""}`}>
       <fieldset>
         <legend>
-          <Globe2 size={17} /> Geographic scope
+          <Globe2 size={17} /> Phạm vi địa lý
         </legend>
-        <p>Choose any countries. Leave empty to explore the world.</p>
+        <p>Chọn quốc gia bạn muốn. Để trống để khám phá toàn thế giới.</p>
         <div className="filter-tools">
           <button
             type="button"
@@ -55,28 +56,28 @@ export function FilterPanel({
               onChange({ ...value, countries: countries.map((c) => c.id) })
             }
           >
-            Select all
+            Chọn tất cả
           </button>
           <button
             type="button"
             className="text-link"
             onClick={() => onChange({ ...value, countries: [] })}
           >
-            Clear countries
+            Bỏ chọn quốc gia
           </button>
         </div>
         <label className="search-box">
           <Search size={17} />
           <input
-            aria-label="Search countries"
+            aria-label="Tìm quốc gia"
             value={search}
             onChange={(e) => setSearch(e.target.value)}
-            placeholder="Search countries…"
+            placeholder="Tìm quốc gia…"
           />
         </label>
         <div className="country-grid">
           {countries
-            .filter((c) => c.name.toLowerCase().includes(search.toLowerCase()))
+            .filter((c) => searchText(c.name).includes(searchText(search)))
             .map((c) => (
               <label
                 className={value.countries.includes(c.id) ? "checked" : ""}
@@ -94,39 +95,39 @@ export function FilterPanel({
         </div>
       </fieldset>
       <fieldset>
-        <legend>Region / continent</legend>
+        <legend>Khu vực / châu lục</legend>
         <p>
-          Regions narrow your selected countries. Multiple choices within a
-          group are combined.
+          Khu vực giới hạn các quốc gia đã chọn. Bạn có thể chọn nhiều mục trong
+          cùng một nhóm.
         </p>
         {chips("regions", regions)}
       </fieldset>
       <fieldset>
-        <legend>Historical era</legend>
-        <p>No selection includes all eras.</p>
+        <legend>Thời kỳ lịch sử</legend>
+        <p>Để trống để chọn tất cả thời kỳ.</p>
         {chips("eras", ERAS)}
       </fieldset>
       <fieldset>
-        <legend>Follow a thread</legend>
+        <legend>Chủ đề khám phá</legend>
         {chips("categories", CATEGORIES)}
       </fieldset>
       <fieldset>
-        <legend>Difficulty</legend>
+        <legend>Độ khó</legend>
         <div className="chips">
           {(["All", "Easy", "Medium", "Hard"] as const).map((d) => (
             <button
               type="button"
-              key={d}
+              key={vi(d)}
               className={`chip ${value.difficulty === d ? "selected" : ""}`}
               aria-pressed={value.difficulty === d}
               onClick={() => onChange({ ...value, difficulty: d })}
             >
-              {d}
+              {vi(d)}
             </button>
           ))}
         </div>
       </fieldset>
-      <div className="active-filters" aria-label="Active filters">
+      <div className="active-filters" aria-label="Bộ lọc đang áp dụng">
         {(["countries", "regions", "eras", "categories"] as const).flatMap(
           (key) =>
             value[key].map((item) => (
@@ -135,9 +136,9 @@ export function FilterPanel({
                 key={key + item}
                 onClick={() => toggle(key, item)}
               >
-                {key === "countries" ? countryName(item) : item}
+                {key === "countries" ? countryName(item) : vi(item)}
                 <X size={12} />
-                <span className="sr-only">Remove filter</span>
+                <span className="sr-only">Bỏ bộ lọc</span>
               </button>
             )),
         )}

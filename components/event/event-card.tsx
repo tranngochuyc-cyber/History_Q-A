@@ -1,4 +1,5 @@
 "use client";
+import { vi } from "@/lib/i18n";
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
@@ -21,7 +22,11 @@ export function EventImage({
       {event.image && !failed ? (
         <Image
           src={event.image}
-          alt={hideYear ? `Historical image associated with ${event.title}` : event.imageAlt}
+          alt={
+            hideYear
+              ? `Ảnh lịch sử liên quan đến ${event.title}`
+              : event.imageAlt
+          }
           fill
           sizes="(max-width:600px) 100vw, (max-width:1000px) 50vw, 33vw"
           onError={() => setFailed(true)}
@@ -30,7 +35,7 @@ export function EventImage({
       ) : (
         <div className="artifact-fallback">
           <Compass strokeWidth={0.6} size={90} />
-          <span>{hideYear ? "UNDATED" : formatEventYear(event)}</span>
+          <span>{hideYear ? "CHƯA RÕ NIÊN ĐẠI" : formatEventYear(event)}</span>
           <small>{event.locationText}</small>
         </div>
       )}
@@ -49,7 +54,7 @@ export function EventMeta({
 }) {
   return (
     <div className="event-meta">
-      <span>{hideYear ? "DATE TO DISCOVER" : formatEventYear(event)}</span>
+      <span>{hideYear ? "NIÊN ĐẠI CẦN KHÁM PHÁ" : formatEventYear(event)}</span>
       <span>{event.countries.map(countryName).join(" · ")}</span>
     </div>
   );
@@ -72,8 +77,10 @@ export function EventCard({
       <EventImage event={event} hideYear={hideYear} />
       <div className="event-card-body">
         <div className="card-top">
-          <span className="tag" data-category={event.categories[0]}>{event.categories[0]}</span>
-          <span>{event.scale}</span>
+          <span className="tag" data-category={event.categories[0]}>
+            {vi(event.categories[0])}
+          </span>
+          <span>{vi(event.scale)}</span>
         </div>
         <EventMeta event={event} hideYear={hideYear} />
         <h3>{event.title}</h3>
@@ -82,14 +89,14 @@ export function EventCard({
           <span>
             {discovered ? (
               <>
-                <Check size={13} /> Discovered
+                <Check size={13} /> Đã khám phá
               </>
             ) : locked ? (
               <>
-                <LockKeyhole size={13} /> Explore to collect
+                <LockKeyhole size={13} /> Khám phá để lưu
               </>
             ) : (
-              "Explore this event"
+              "Khám phá sự kiện"
             )}
           </span>
           <ArrowUpRight size={17} />
@@ -102,7 +109,7 @@ export function EventCard({
     <button
       className={cardClass}
       onClick={onSelect}
-      aria-label={`Explore ${event.title}`}
+      aria-label={`Khám phá ${event.title}`}
     >
       {inner}
     </button>

@@ -2952,3 +2952,127 @@ footer .brand svg {
     padding: 16px;
   }
 }
+
+/* The hero gallery keeps the entire historical image visible, outside the copy. */
+.hero {
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+  gap: 40px;
+  padding-block: 40px;
+}
+.hero-content {
+  padding: 24px 0;
+  min-width: 0;
+}
+.hero h1 {
+  max-width: 14ch;
+  font-size: clamp(34px, 3.7vw, 54px);
+  line-height: 1.2;
+}
+.hero .primary,
+.hero .primary:visited {
+  color: #17383d;
+}
+.hero-atlas {
+  min-width: 0;
+  padding: 12px 0;
+}
+.hero-atlas > .eyebrow {
+  margin-bottom: 12px;
+}
+.hero-atlas-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+}
+.hero-artwork {
+  border: 1px solid #526773;
+  border-radius: 9px;
+  overflow: hidden;
+  background: #182a34;
+  display: block;
+}
+.hero-artwork:hover {
+  border-color: #a7d6d0;
+}
+.hero-artwork-image {
+  position: relative;
+  height: 160px;
+  background: #15262e;
+}
+.hero-artwork.artwork-0 {
+  grid-column: 1 / -1;
+}
+.artwork-0 .hero-artwork-image {
+  height: 220px;
+}
+.hero-artwork-caption {
+  display: grid;
+  gap: 3px;
+  padding: 10px 14px;
+  color: #f5f2e9;
+}
+.hero-artwork-caption span {
+  font-size: 10px;
+  color: #afd1d1;
+}
+.hero-artwork-caption strong {
+  font-size: 15px;
+  font-weight: 500;
+}
+.navbar nav {
+  gap: 14px;
+}
+@media (max-width: 1000px) {
+  .hero {
+    gap: 24px;
+  }
+  .hero h1 {
+    font-size: clamp(34px, 4vw, 44px);
+  }
+  .hero .button-row {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .hero-artwork-caption {
+    padding: 9px;
+  }
+}
+@media (max-width: 600px) {
+  .hero {
+    padding: 30px 20px;
+    gap: 20px;
+  }
+  .hero-content {
+    padding: 0;
+  }
+  .hero h1 {
+    font-size: clamp(32px, 9vw, 40px);
+    max-width: 16ch;
+  }
+  .hero .button-row {
+    flex-direction: row;
+  }
+  .hero-artwork-image {
+    height: 130px;
+  }
+  .artwork-0 .hero-artwork-image {
+    height: 190px;
+  }
+  .hero-artwork-caption strong {
+    font-size: 13px;
+  }
+  .hero-atlas-grid {
+    gap: 10px;
+  }
+  .navbar nav a {
+    padding-inline: 3px;
+    font-size: 12px;
+    gap: 4px;
+  }
+  .navbar nav {
+    gap: 3px;
+  }
+  .navbar nav a svg {
+    width: 14px;
+  }
+}

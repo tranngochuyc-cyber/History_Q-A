@@ -1,4 +1,5 @@
 import type { Country } from "../types";
+const countryLabels = new Intl.DisplayNames(["vi"], { type: "region" });
 const rows = [
   ["VN", "Vietnam", "Asia", "Southeast Asia"],
   ["JP", "Japan", "Asia", "East Asia"],
@@ -38,7 +39,7 @@ export const countries: Country[] = rows.map(
   ([code, name, continent, region]) => ({
     id: code,
     code,
-    name,
+    name: countryLabels.of(code) ?? name,
     continent,
     region,
   }),

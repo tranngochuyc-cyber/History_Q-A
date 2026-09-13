@@ -1,106 +1,99 @@
 import Link from "next/link";
 import { ArrowRight, Hourglass } from "lucide-react";
-export const metadata = { title: "About & how to play" };
+export const metadata = { title: "Giới thiệu và cách chơi" };
 export default function Page() {
   return (
     <main id="main" className="page-shell about-page">
       <div className="page-heading">
         <Hourglass size={34} />
-        <div className="eyebrow">WELCOME TO CHRONOQUEST</div>
-        <h1>History is more than a date.</h1>
+        <div className="eyebrow">CHÀO MỪNG ĐẾN CHRONOQUEST</div>
+        <h1>Lịch sử không chỉ là niên đại.</h1>
         <p>
-          It’s a collection of choices, connections and lives. ChronoQuest is an
-          invitation to explore them, one event at a time.
+          Đó là những lựa chọn, mối liên hệ và cuộc đời. Khám phá từng câu
+          chuyện qua một hành trình của riêng bạn.
         </p>
       </div>
       <article className="about-content">
         <section>
-          <h2>Your journey, in five steps.</h2>
+          <h2>Năm bước cho một hành trình.</h2>
           <ol>
             <li>
-              <strong>Discover.</strong> Set your scope and choose 10, 20 or 30
-              rounds. Each round offers three events; choose filters with at
-              least three matching records.
+              <strong>Khám phá.</strong> Chọn 10, 20 hoặc 30 vòng và phạm vi
+              lịch sử. Bộ lọc cần có ít nhất ba sự kiện phù hợp.
             </li>
             <li>
-              <strong>Choose.</strong> Select the story that interests you.
-              Unseen events appear before repeats whenever your selection
-              allows.
+              <strong>Lựa chọn.</strong> Mỗi vòng có ba sự kiện. Chọn câu chuyện
+              bạn thích; sự kiện chưa xuất hiện được ưu tiên trước khi lặp lại.
             </li>
             <li>
-              <strong>Learn.</strong> Read a short brief covering the context
-              and significance of the event.
+              <strong>Tìm hiểu.</strong> Đọc ảnh và tóm tắt về bối cảnh, diễn
+              biến, tác động của sự kiện.
             </li>
             <li>
-              <strong>Answer.</strong> Try multiple choice, true or false, or a
-              year challenge. Dates are concealed for year challenges. There is
-              no timer.
+              <strong>Trả lời.</strong> Thử trắc nghiệm, đúng/sai hoặc đoán năm.
+              Niên đại được ẩn khi đoán năm. Không giới hạn thời gian.
             </li>
             <li>
-              <strong>Unlock.</strong> Read the explanation. The event joins
-              your archive whether your answer was right or wrong.
+              <strong>Lưu dấu.</strong> Đọc giải thích. Sự kiện được lưu vào bộ
+              sưu tập dù trả lời đúng hay sai.
             </li>
           </ol>
         </section>
         <section>
-          <h2>Scoring rewards understanding.</h2>
+          <h2>Điểm số ghi nhận hiểu biết.</h2>
           <p>
-            Correct answers earn 100 base points. Easy questions use ×1, Medium
-            ×1.25 and Hard ×1.5. Each prior consecutive correct answer adds 10
-            bonus points, capped at 100. An incorrect answer resets your streak.
+            Trả lời đúng nhận 100 điểm cơ bản. Hệ số độ khó: Dễ ×1, Vừa ×1,25,
+            Khó ×1,5. Mỗi câu đúng liên tiếp trước đó cộng 10 điểm thưởng, tối
+            đa 100. Trả lời sai đặt lại chuỗi đúng.
           </p>
           <p>
-            Year guesses earn 100 for an exact answer, 90 within one year, 70
-            within five, 40 within ten, and 20 within twenty-five. Further
-            guesses earn zero. Difficulty applies to these points; only an exact
-            year counts as correct for accuracy and streaks. Use negative
-            numbers for BCE. There is no year zero.
-          </p>
-        </section>
-        <section>
-          <h2>An archive that grows with you.</h2>
-          <p>
-            Progress is automatically saved in this browser, including
-            unfinished journeys. Reading a record is always free; answering a
-            question collects it. Accuracy measures all attempts, while question
-            completion counts distinct questions.
-          </p>
-          <p>
-            Country and region groups narrow each other. Within each filter
-            group, any selected option may match. Small collections reuse the
-            least-seen events and rotate questions. Counts reflect this curated
-            seed collection, not all of world history.
+            Đoán năm chính xác được 100 điểm cơ bản; lệch tối đa 1 năm: 90; 5
+            năm: 70; 10 năm: 40; 25 năm: 20; xa hơn: 0. Hệ số độ khó vẫn áp
+            dụng. Chỉ năm chính xác mới được tính đúng và nối chuỗi. Nhập số âm
+            cho năm trước Công nguyên; không có năm 0.
           </p>
         </section>
         <section>
-          <h2>History deserves context.</h2>
+          <h2>Bộ sưu tập lớn lên cùng bạn.</h2>
           <p>
-            Each record links to a museum, archive, institution or reference
-            work for further reading. Dates and categories are useful ways to
-            navigate, not substitutes for historical nuance. Modern country
-            labels locate events geographically and do not imply that today’s
-            states or borders existed at the time.
+            Tiến trình và hành trình chưa hoàn thành tự động lưu trong trình
+            duyệt. Đọc hồ sơ luôn miễn phí; trả lời câu hỏi sẽ lưu sự kiện. Độ
+            chính xác tính mọi lượt trả lời, còn số câu đã hoàn thành chỉ đếm
+            các câu khác nhau.
           </p>
           <p>
-            Era boundaries in this edition are navigational conventions: Ancient
-            before 500, Medieval 500–1499, Early Modern 1500–1799, Modern
-            1800–1944, and Contemporary from 1945. Some transitions occurred
-            differently across regions. Undated artwork is labeled approximately
-            and excluded from exact year challenges.
+            Các nhóm quốc gia, khu vực, thời kỳ và chủ đề giới hạn lẫn nhau.
+            Trong cùng một nhóm, sự kiện chỉ cần khớp một mục đã chọn. Bộ sưu
+            tập nhỏ sẽ dùng lại sự kiện ít xuất hiện nhất và luân phiên câu hỏi.
           </p>
         </section>
         <section>
-          <h2>Made for a moment of curiosity.</h2>
+          <h2>Lịch sử cần được đặt trong bối cảnh.</h2>
           <p>
-            Keyboard navigation, visible focus, readable contrast and
-            reduced-motion preferences are supported. Progress stays on this
-            device. Clearing browser data removes locally saved progress.
+            Mỗi hồ sơ có liên kết nguồn để đọc thêm. Nhãn quốc gia hiện đại chỉ
+            vị trí địa lý, không khẳng định các quốc gia hay biên giới đó đã tồn
+            tại khi sự kiện diễn ra.
+          </p>
+          <p>
+            Thời kỳ là quy ước điều hướng: Cổ đại trước năm 500; Trung đại
+            500–1499; Cận đại sơ kỳ 1500–1799; Cận đại 1800–1944; Hiện đại từ
+            1945. Chuyển tiếp lịch sử khác nhau giữa các vùng. Tác phẩm không có
+            năm chính xác được ghi khoảng niên đại và không dùng cho câu hỏi
+            đoán năm.
           </p>
         </section>
-        <Link href="/play" className="button primary">
-          Start exploring <ArrowRight size={18} />
-        </Link>
+        <section>
+          <h2>Khám phá theo nhịp riêng.</h2>
+          <p>
+            Bạn có thể dùng bàn phím, trạng thái lấy nét rõ ràng và tùy chọn
+            giảm chuyển động. Tiến trình lưu trên thiết bị này; xóa dữ liệu
+            trình duyệt sẽ xóa tiến trình đã lưu.
+          </p>
+        </section>
       </article>
+      <Link className="button primary" href="/play">
+        Bắt đầu khám phá <ArrowRight size={18} />
+      </Link>
     </main>
   );
 }

@@ -1,4 +1,5 @@
 "use client";
+import { vi } from "@/lib/i18n";
 import Link from "next/link";
 import { Trophy, LockKeyhole, ArrowRight, Check } from "lucide-react";
 import { useProgress } from "../providers";
@@ -10,7 +11,7 @@ import { achievements } from "@/lib/game/achievements";
 export function Stats() {
   const { data, ready } = useProgress();
   if (!ready)
-    return <div className="loading-skeleton" aria-label="Loading statistics" />;
+    return <div className="loading-skeleton" aria-label="Đang tải thống kê" />;
   const stats = performance(data.answers),
     countryCount = new Set(
       events
@@ -44,30 +45,32 @@ export function Stats() {
   return (
     <>
       <div className="page-heading">
-        <div className="eyebrow">YOUR PERSONAL ATLAS</div>
-        <h1>Look how far you’ve traveled.</h1>
-        <p>Small discoveries add up to a wider view of the world.</p>
+        <div className="eyebrow">BẢN ĐỒ KHÁM PHÁ CỦA BẠN</div>
+        <h1>Nhìn lại hành trình đã qua.</h1>
+        <p>Từng khám phá nhỏ mở rộng hiểu biết về thế giới.</p>
       </div>
       {!stats.total && (
         <div className="notice">
-          <span>Your atlas is waiting for its first discovery.</span>
+          <span>Hành trình đang chờ khám phá đầu tiên của bạn.</span>
           <Link className="text-link" href="/play">
-            Begin a journey <ArrowRight size={15} />
+            Bắt đầu hành trình <ArrowRight size={15} />
           </Link>
         </div>
       )}
       <div className="stat-grid dashboard-stats">
         {[
-          [stats.total, "Questions answered"],
-          [stats.correct, "Correct answers"],
-          [`${stats.accuracy}%`, "Accuracy"],
-          [data.games.length, "Journeys completed"],
-          [data.discovered.length, "Events discovered"],
-          [countryCount, "Countries explored"],
-          [`×${streak}`, "Longest streak"],
+          [stats.total, "Câu hỏi đã trả lời"],
+          [stats.correct, "Câu trả lời đúng"],
+          [`${stats.accuracy}%`, "Độ chính xác"],
+          [data.games.length, "Hành trình hoàn thành"],
+          [data.discovered.length, "Sự kiện đã khám phá"],
+          [countryCount, "Quốc gia đã khám phá"],
+          [`×${streak}`, "Chuỗi đúng dài nhất"],
           [
-            data.answers.reduce((n, a) => n + a.points, 0).toLocaleString(),
-            "Total score",
+            data.answers
+              .reduce((n, a) => n + a.points, 0)
+              .toLocaleString("vi-VN"),
+            "Tổng điểm",
           ],
         ].map(([value, label]) => (
           <div key={label}>
@@ -78,18 +81,18 @@ export function Stats() {
       </div>
       <div className="performance-grid">
         <section className="performance-panel">
-          <div className="eyebrow">FOLLOWING THE THREADS</div>
-          <h2>By category</h2>
+          <div className="eyebrow">THEO DÒNG CHỦ ĐỀ</div>
+          <h2>Theo chủ đề</h2>
           <PerformanceBars rows={categories} />
         </section>
         <section className="performance-panel">
-          <div className="eyebrow">ACROSS THE MAP</div>
-          <h2>By country</h2>
+          <div className="eyebrow">QUA CÁC VÙNG ĐẤT</div>
+          <h2>Theo quốc gia</h2>
           {countryStats.length ? (
             <PerformanceBars rows={countryStats} />
           ) : (
             <p className="empty-small">
-              Play a round to begin mapping your knowledge.
+              Chơi một vòng để bắt đầu ghi dấu hiểu biết của bạn.
             </p>
           )}
         </section>
@@ -97,8 +100,8 @@ export function Stats() {
       <section className="achievements-section">
         <div className="section-heading">
           <div>
-            <div className="eyebrow">MILESTONES, NOT FINISH LINES</div>
-            <h2>The marks of an explorer.</h2>
+            <div className="eyebrow">MỖI CỘT MỐC LÀ MỘT KHỞI ĐẦU</div>
+            <h2>Dấu ấn người khám phá.</h2>
           </div>
           <Trophy size={28} />
         </div>
@@ -121,7 +124,7 @@ export function Stats() {
               <span>
                 {a.unlocked ? (
                   <>
-                    <Check size={13} /> Earned
+                    <Check size={13} /> Đã đạt
                   </>
                 ) : (
                   `${Math.min(a.value, a.target)} / ${a.target}`
@@ -142,7 +145,7 @@ function PerformanceBars({
   return (
     <div className="performance-bars">
       {rows.map((r) => (
-        <div key={r.name}>
+        <div key={vi(r.name)}>
           <div>
             <span>{r.name}</span>
             <strong>
@@ -155,7 +158,7 @@ function PerformanceBars({
           <div
             className="progress-track"
             role="img"
-            aria-label={`${r.name}: ${r.correct} correct of ${r.total}`}
+            aria-label={`${vi(r.name)}: ${r.correct} đúng trên ${r.total}`}
           >
             <div style={{ width: `${r.accuracy}%` }} />
           </div>

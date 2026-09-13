@@ -1,74 +1,108 @@
 import Link from "next/link";
+import Image from "next/image";
 import { ArrowRight, ArrowUpRight, Globe2, Sparkles } from "lucide-react";
 import { HomeSections } from "@/components/home-sections";
 export default function Home() {
   return (
     <main id="main">
       <section className="hero">
-        <div className="hero-image" />
         <div className="hero-content">
           <div className="eyebrow">
-            <span className="tiny-line" /> A JOURNEY THROUGH HUMAN HISTORY
+            <span className="tiny-line" /> HÀNH TRÌNH QUA LỊCH SỬ NHÂN LOẠI
           </div>
           <h1>
-            The past is vast. <em>Find your next discovery.</em>
+            Quá khứ rộng lớn. <em>Mỗi chuyện, một khám phá.</em>
           </h1>
           <p>
-            Three events. One choice.
+            Ba sự kiện. Một lựa chọn.
             <br />
-            Follow your curiosity through the moments that shaped our world.
+            Theo trí tò mò đến những thời khắc đã định hình thế giới.
           </p>
           <div className="button-row">
             <Link href="/play" className="button primary">
-              Start exploring <ArrowRight size={18} />
+              Bắt đầu khám phá <ArrowRight size={18} />
             </Link>
             <Link href="/archive" className="button ghost">
-              View the archive <ArrowUpRight size={17} />
+              Xem bộ sưu tập <ArrowUpRight size={17} />
             </Link>
           </div>
           <div className="hero-footnote">
-            <Globe2 size={15} /> Across continents. Across centuries. At your
-            pace.
+            <Globe2 size={15} /> Qua các châu lục và thế kỷ. Theo nhịp riêng của
+            bạn.
           </div>
         </div>
-        <div className="hero-caption">
-          <span>FIELD NOTES / 001</span>
-          <strong>
-            One small step.
-            <br />
-            An entirely new perspective.
-          </strong>
-          <span>APOLLO 11 · THE MOON · 1969</span>
-        </div>
-        <div className="hero-coordinates">
-          00° 40′ 26.69″ N &nbsp; 23° 28′ 22.69″ E
+        <div className="hero-atlas" aria-label="Những dấu mốc qua các thời kỳ">
+          <div className="eyebrow">BA THỜI KỲ · MUÔN CÂU CHUYỆN</div>
+          <div className="hero-atlas-grid">
+            {[
+              {
+                id: "constantinople",
+                title: "Constantinople",
+                date: "1453 · Bước ngoặt đế quốc",
+                alt: "Tranh năm 1876 tái hiện Mehmed II tiến vào Constantinople",
+              },
+              {
+                id: "great-wave",
+                title: "Sóng lừng của Hokusai",
+                date: "Khoảng 1831 · Nghệ thuật",
+                alt: "Tranh Sóng lừng ngoài khơi Kanagawa của Hokusai",
+              },
+              {
+                id: "apollo-11",
+                title: "Apollo 11",
+                date: "1969 · Chạm tới Mặt Trăng",
+                alt: "Buzz Aldrin trên Mặt Trăng, ảnh của Neil Armstrong",
+              },
+            ].map((item, i) => (
+              <Link
+                key={item.id}
+                href={`/event/${item.id}`}
+                className={`hero-artwork artwork-${i}`}
+              >
+                <div className="hero-artwork-image">
+                  <Image
+                    src={`/images/${item.id}.webp`}
+                    alt={item.alt}
+                    fill
+                    sizes="(max-width:600px) 90vw, 40vw"
+                    priority={i === 0}
+                    style={{ objectFit: "contain" }}
+                  />
+                </div>
+                <div className="hero-artwork-caption">
+                  <span>{item.date}</span>
+                  <strong>{item.title}</strong>
+                </div>
+              </Link>
+            ))}
+          </div>
         </div>
       </section>
       <div className="archive-strip">
         <span>
-          <Sparkles size={16} /> CURIOSITY IS YOUR COMPASS
+          <Sparkles size={16} /> TRÍ TÒ MÒ LÀ LA BÀN
         </span>
-        <span>3 events per round</span>
-        <span>5 historical eras</span>
-        <span>A world of connections</span>
+        <span>3 sự kiện mỗi vòng</span>
+        <span>5 thời kỳ lịch sử</span>
+        <span>Những câu chuyện kết nối</span>
       </div>
       <section className="section">
         <div className="section-heading">
           <div>
-            <div className="eyebrow">YOUR EXPEDITION, EXPLAINED</div>
-            <h2>A little choice. A wider world.</h2>
+            <div className="eyebrow">HÀNH TRÌNH DIỄN RA THẾ NÀO</div>
+            <h2>Một lựa chọn. Thế giới rộng hơn.</h2>
           </div>
           <Link href="/about" className="text-link">
-            How to play <ArrowUpRight size={16} />
+            Cách chơi <ArrowUpRight size={16} />
           </Link>
         </div>
         <div className="steps">
           {[
-            ["Discover", "Three moments in history. A new set every round."],
-            ["Choose", "Go where your curiosity takes you."],
-            ["Learn", "Uncover the story behind the event."],
-            ["Answer", "Put your newfound knowledge to the test."],
-            ["Unlock", "Keep every discovery in your archive."],
+            ["Khám phá", "Ba thời khắc lịch sử. Những lựa chọn mới mỗi vòng."],
+            ["Lựa chọn", "Chọn câu chuyện khiến bạn tò mò."],
+            ["Tìm hiểu", "Tìm hiểu câu chuyện phía sau sự kiện."],
+            ["Trả lời", "Thử sức với kiến thức vừa khám phá."],
+            ["Lưu dấu", "Lưu từng khám phá vào bộ sưu tập."],
           ].map(([title, desc], i) => (
             <div className="step" key={title}>
               <span>0{i + 1}</span>
@@ -81,15 +115,15 @@ export default function Home() {
       <HomeSections />
       <section className="section invitation">
         <div>
-          <div className="eyebrow">AN OPEN INVITATION TO THE PAST</div>
-          <h2>Where will history take you?</h2>
+          <div className="eyebrow">LỜI MỜI KHÁM PHÁ QUÁ KHỨ</div>
+          <h2>Lịch sử sẽ đưa bạn đến đâu?</h2>
           <p>
-            Build your own expedition. Choose a place, an era, or let the whole
-            world surprise you.
+            Tạo hành trình riêng. Chọn vùng đất, thời kỳ hoặc để cả thế giới
+            mang đến bất ngờ.
           </p>
         </div>
         <Link href="/play" className="button primary">
-          Choose your journey <ArrowRight size={18} />
+          Chọn hành trình <ArrowRight size={18} />
         </Link>
       </section>
     </main>

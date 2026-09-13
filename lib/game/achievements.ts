@@ -11,29 +11,29 @@ export function achievements(p: Progress) {
   return [
     {
       id: "time-traveler",
-      name: "Time Traveler",
-      description: "Discover 25 events",
+      name: "Lữ khách thời gian",
+      description: "Khám phá 25 sự kiện",
       value: p.discovered.length,
       target: 25,
     },
     {
       id: "historian",
-      name: "Historian",
-      description: "Answer 100 questions",
+      name: "Nhà sử học",
+      description: "Trả lời 100 câu hỏi",
       value: p.answers.length,
       target: 100,
     },
     {
       id: "world-explorer",
-      name: "World Explorer",
-      description: "Discover events from 10 countries",
+      name: "Nhà thám hiểm",
+      description: "Khám phá sự kiện từ 10 quốc gia",
       value: countries,
       target: 10,
     },
     {
       id: "perfect-round",
-      name: "Perfect Round",
-      description: "Complete a journey with 100% accuracy",
+      name: "Hành trình hoàn hảo",
+      description: "Hoàn thành hành trình với độ chính xác 100%",
       value: p.games.filter(
         (g) =>
           g.answers.length === g.settings.rounds &&
@@ -43,8 +43,8 @@ export function achievements(p: Progress) {
     },
     {
       id: "ancient-scholar",
-      name: "Ancient Scholar",
-      description: "Answer 20 Ancient questions correctly",
+      name: "Học giả cổ đại",
+      description: "Trả lời đúng 20 câu hỏi thời cổ đại",
       value: correctIn((id) =>
         events.some((e) => e.id === id && e.era === "Ancient"),
       ),
@@ -52,8 +52,8 @@ export function achievements(p: Progress) {
     },
     {
       id: "cold-warrior",
-      name: "Cold Warrior",
-      description: "Answer 20 Cold War questions correctly",
+      name: "Am hiểu Chiến tranh Lạnh",
+      description: "Trả lời đúng 20 câu hỏi về Chiến tranh Lạnh",
       value: correctIn((id) =>
         events.some((e) => e.id === id && e.tags.includes("Cold War")),
       ),

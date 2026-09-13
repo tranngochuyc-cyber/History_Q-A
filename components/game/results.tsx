@@ -1,4 +1,5 @@
 "use client";
+import { vi } from "@/lib/i18n";
 import Link from "next/link";
 import { EventImage } from "../event/event-card";
 import { useRouter } from "next/navigation";
@@ -34,61 +35,59 @@ export function GameResults({ game }: { game: GameSession }) {
   return (
     <div className="results-page reveal">
       <Compass size={52} strokeWidth={1} />
-      <div className="eyebrow">EXPEDITION COMPLETE</div>
-      <h1>A little closer to the past.</h1>
-      <p>Every answer is a connection. Every discovery stays with you.</p>
+      <div className="eyebrow">HOÀN THÀNH HÀNH TRÌNH</div>
+      <h1>Hiểu thêm một phần quá khứ.</h1>
+      <p>Mỗi câu trả lời nối thêm hiểu biết. Mỗi khám phá đều được lưu lại.</p>
       <div className="final-score">
-        <span>FINAL SCORE</span>
-        <strong>{game.score.toLocaleString()}</strong>
+        <span>TỔNG ĐIỂM</span>
+        <strong>{game.score.toLocaleString("vi-VN")}</strong>
       </div>
       <div className="stat-grid">
         <div>
           <strong>{stats.accuracy}%</strong>
-          <span>Accuracy</span>
+          <span>Độ chính xác</span>
         </div>
         <div>
           <strong>
             {stats.correct} / {stats.total}
           </strong>
-          <span>Correct answers</span>
+          <span>Câu trả lời đúng</span>
         </div>
         <div>
           <strong>{stats.incorrect}</strong>
-          <span>Incorrect answers</span>
+          <span>Câu trả lời sai</span>
         </div>
         <div>
           <strong>×{game.bestStreak}</strong>
-          <span>Best streak</span>
+          <span>Chuỗi đúng dài nhất</span>
         </div>
         <div>
           <strong>{newEvents.length}</strong>
-          <span>New discoveries</span>
+          <span>Khám phá mới</span>
         </div>
         <div>
           <strong>{countryCount}</strong>
-          <span>Countries explored</span>
+          <span>Quốc gia đã khám phá</span>
         </div>
       </div>
       <div className="result-categories">
         <div>
-          <span>STRONGEST THREAD</span>
+          <span>CHỦ ĐỀ NỔI BẬT</span>
           <strong>
-            {cats[0]?.name ?? "—"} · {cats[0]?.accuracy ?? 0}%
+            {vi(cats[0]?.name ?? "—")} · {cats[0]?.accuracy ?? 0}%
           </strong>
         </div>
         <div>
-          <span>ROOM TO EXPLORE</span>
+          <span>CHỦ ĐỀ CẦN TÌM HIỂU</span>
           <strong>
-            {cats.at(-1)?.name ?? "—"} · {cats.at(-1)?.accuracy ?? 0}%
+            {vi(cats.at(-1)?.name ?? "—")} · {cats.at(-1)?.accuracy ?? 0}%
           </strong>
         </div>
       </div>
       {unlocked.length > 0 && (
         <div className="achievement-inline">
           <Trophy size={18} />
-          <span>
-            Achievements earned: {unlocked.map((a) => a.name).join(" · ")}
-          </span>
+          <span>Cột mốc đã đạt: {unlocked.map((a) => a.name).join(" · ")}</span>
         </div>
       )}
       <div className="button-row">
@@ -102,24 +101,24 @@ export function GameResults({ game }: { game: GameSession }) {
             router.push("/game");
           }}
         >
-          Play again <ArrowRight size={17} />
+          Chơi lại <ArrowRight size={17} />
         </button>
         <Link className="button" href="/play">
-          Change filters
+          Đổi bộ lọc
         </Link>
         <Link className="button ghost" href="/archive?status=discovered">
-          View discovered events
+          Xem sự kiện đã khám phá
         </Link>
       </div>
       <div className="journey-log">
-        <h2>Your journey in {stats.total} moments</h2>
+        <h2>Hành trình qua {stats.total} thời khắc</h2>
         {game.answers.map((a, i) => (
           <Link href={`/event/${eventById(a.eventId).slug}`} key={a.id}>
             <span>{String(i + 1).padStart(2, "0")}</span>
             <EventImage event={eventById(a.eventId)} />
             <strong>{eventById(a.eventId).title}</strong>
             <span className={a.correct ? "success-text" : "muted"}>
-              {a.correct ? "Correct" : "Reviewed"} · +{a.points}
+              {a.correct ? "Đúng" : "Đã ôn lại"} · +{a.points}
             </span>
           </Link>
         ))}

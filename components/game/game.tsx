@@ -1,4 +1,5 @@
 "use client";
+import { vi } from "@/lib/i18n";
 import Link from "next/link";
 import { useEffect, useRef } from "react";
 import {
@@ -24,14 +25,16 @@ export function Game() {
     heading.current?.focus();
   }, [game?.phase, game?.round]);
   if (!ready)
-    return <div className="loading-skeleton" aria-label="Loading journey" />;
+    return (
+      <div className="loading-skeleton" aria-label="Đang tải hành trình" />
+    );
   if (!game)
     return (
       <div className="empty-state">
-        <h1>Your next chapter awaits.</h1>
-        <p>Choose a journey to begin discovering history.</p>
+        <h1>Câu chuyện tiếp theo đang chờ bạn.</h1>
+        <p>Chọn hành trình để bắt đầu khám phá lịch sử.</p>
         <Link className="button primary" href="/play">
-          Plan a journey <ArrowRight size={17} />
+          Tạo hành trình <ArrowRight size={17} />
         </Link>
       </div>
     );
@@ -45,24 +48,26 @@ export function Game() {
     <>
       <div className="game-top">
         <Link href="/play" className="text-link">
-          <ArrowLeft size={15} /> Save & leave
+          <ArrowLeft size={15} /> Lưu và rời đi
         </Link>
-        <span>EXPEDITION / {game.settings.rounds} MOMENTS</span>
+        <span>HÀNH TRÌNH / {game.settings.rounds} THỜI KHẮC</span>
       </div>
       <div className="game-header">
         <div>
-          <span className="eyebrow">YOUR PROGRESS</span>
+          <span className="eyebrow">TIẾN TRÌNH</span>
           <strong>
-            Round {String(game.round).padStart(2, "0")}{" "}
+            Vòng {String(game.round).padStart(2, "0")}{" "}
             <small>/ {game.settings.rounds}</small>
           </strong>
         </div>
         <div>
-          <span className="eyebrow">SCORE</span>
-          <strong aria-live="polite">{game.score.toLocaleString()}</strong>
+          <span className="eyebrow">ĐIỂM</span>
+          <strong aria-live="polite">
+            {game.score.toLocaleString("vi-VN")}
+          </strong>
         </div>
         <div>
-          <span className="eyebrow">STREAK</span>
+          <span className="eyebrow">CHUỖI ĐÚNG</span>
           <strong className={game.streak > 1 ? "gold" : ""}>
             <Flame size={22} /> ×{game.streak}
           </strong>
@@ -71,7 +76,7 @@ export function Game() {
       <div
         className="progress-track"
         role="progressbar"
-        aria-label="Journey progress"
+        aria-label="Tiến trình hành trình"
         aria-valuenow={game.answers.length}
         aria-valuemin={0}
         aria-valuemax={game.settings.rounds}
@@ -85,11 +90,11 @@ export function Game() {
       {game.phase === "SELECT_EVENT" ? (
         <section className="game-stage">
           <div className="stage-heading">
-            <div className="eyebrow">01 / DISCOVER & CHOOSE</div>
+            <div className="eyebrow">01 / KHÁM PHÁ VÀ LỰA CHỌN</div>
             <h1 ref={heading} tabIndex={-1}>
-              Three moments. Which calls to you?
+              Ba thời khắc. Bạn chọn câu chuyện nào?
             </h1>
-            <p>Every choice opens a different chapter of human history.</p>
+            <p>Mỗi lựa chọn mở ra một chương khác trong lịch sử nhân loại.</p>
           </div>
           <div className="event-grid">
             {game.choices.map((id) => (
@@ -104,9 +109,8 @@ export function Game() {
           </div>
           {game.choices.length < 3 && (
             <p className="pool-note">
-              Your filters contain {game.choices.length} event
-              {game.choices.length === 1 ? "" : "s"}. Each available event is
-              shown.
+              Bộ lọc của bạn có {game.choices.length} sự kiện . Mỗi sự kiện phù
+              hợp đều được hiển thị.
             </p>
           )}
         </section>
@@ -115,10 +119,10 @@ export function Game() {
           <div className="stage-heading">
             <div className="eyebrow">
               {game.phase === "EVENT_BRIEF"
-                ? "02 / THE HISTORICAL BRIEF"
+                ? "02 / CÂU CHUYỆN LỊCH SỬ"
                 : game.phase === "QUESTION"
-                  ? "03 / TEST YOUR KNOWLEDGE"
-                  : "04 / A NEW DISCOVERY"}
+                  ? "03 / THỬ TÀI KIẾN THỨC"
+                  : "04 / KHÁM PHÁ MỚI"}
             </div>
             <h1 ref={heading} tabIndex={-1}>
               {event.title}
@@ -136,11 +140,11 @@ export function Game() {
               />
               <div className="chips">
                 {event.categories.map((c) => (
-                  <span className="tag" key={c}>
-                    {c}
+                  <span className="tag" key={vi(c)}>
+                    {vi(c)}
                   </span>
                 ))}
-                <span className="tag">{event.scale}</span>
+                <span className="tag">{vi(event.scale)}</span>
               </div>
               <p>{event.locationText}</p>
               {event.imageAttribution && (
@@ -157,19 +161,19 @@ export function Game() {
             <div>
               {game.phase === "EVENT_BRIEF" ? (
                 <div className="brief-copy reveal">
-                  <span className="eyebrow">ARCHIVE FIELD NOTES</span>
+                  <span className="eyebrow">GHI CHÉP LỊCH SỬ</span>
                   <h2>{event.shortSummary}</h2>
                   <p>{event.summary}</p>
                   {hideYear && (
                     <p className="quiz-note">
-                      The date is concealed for this year challenge.
+                      Niên đại được ẩn trong thử thách đoán năm này.
                     </p>
                   )}
                   <button
                     className="button primary"
                     onClick={() => dispatch({ type: "CONTINUE" })}
                   >
-                    Continue to question <ArrowRight size={18} />
+                    Đến câu hỏi <ArrowRight size={18} />
                   </button>
                 </div>
               ) : game.phase === "QUESTION" ? (
@@ -188,22 +192,22 @@ export function Game() {
                   </div>
                   <div className="eyebrow">
                     {answer.correct
-                      ? "WELL REMEMBERED"
-                      : "ANOTHER PIECE OF THE STORY"}
+                      ? "BẠN NHỚ RẤT TỐT"
+                      : "THÊM MỘT ĐIỀU ĐỂ NHỚ"}
                   </div>
                   <h2>
-                    {answer.correct ? "Correct." : "Not quite."}{" "}
+                    {answer.correct ? "Chính xác." : "Chưa chính xác."}{" "}
                     <span>+{answer.points}</span>
                   </h2>
                   <div className="answer-review">
-                    <span>THE CORRECT ANSWER</span>
+                    <span>ĐÁP ÁN ĐÚNG</span>
                     <strong>
                       {q.type === "multiple-choice"
                         ? q.options.find((o) => o.id === q.answer)?.text
                         : q.type === "true-false"
                           ? q.answer
-                            ? "True"
-                            : "False"
+                            ? "Đúng"
+                            : "Sai"
                           : formatYear(q.answer)}
                     </strong>
                   </div>
@@ -211,16 +215,16 @@ export function Game() {
                   <div className="discovery-note">
                     <BookmarkPlus size={18} />
                     {game.initialDiscovered.includes(event.id)
-                      ? "Knowledge added to your archive."
-                      : "Event discovered. Added to your archive."}
+                      ? "Kiến thức đã được lưu vào bộ sưu tập."
+                      : "Đã khám phá sự kiện và lưu vào bộ sưu tập."}
                   </div>
                   <button
                     className="button primary"
                     onClick={() => dispatch({ type: "NEXT" })}
                   >
                     {game.round === game.settings.rounds
-                      ? "View journey results"
-                      : "Discover next events"}
+                      ? "Xem kết quả hành trình"
+                      : "Khám phá sự kiện tiếp theo"}
                     <ArrowRight size={18} />
                   </button>
                 </div>
@@ -230,9 +234,9 @@ export function Game() {
         </section>
       ) : (
         <div className="empty-state">
-          <h2>This saved event is unavailable.</h2>
+          <h2>Sự kiện đã lưu này không còn khả dụng.</h2>
           <Link href="/play" className="button">
-            Start a fresh journey
+            Bắt đầu hành trình mới
           </Link>
         </div>
       )}

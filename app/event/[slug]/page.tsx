@@ -12,7 +12,7 @@ export async function generateMetadata({
   const { slug } = await params;
   const event = events.find((e) => e.slug === slug);
   return {
-    title: event?.title ?? "Event not found",
+    title: event?.title ?? "Không tìm thấy sự kiện",
     description: event?.shortSummary,
     openGraph: {
       title: event?.title,

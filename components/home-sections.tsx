@@ -1,4 +1,5 @@
 "use client";
+import { vi } from "@/lib/i18n";
 import Link from "next/link";
 import { ArrowUpRight, ArrowRight, Globe2 } from "lucide-react";
 import { events } from "@/lib/data/events";
@@ -29,15 +30,15 @@ export function HomeSections() {
       <section className="section featured-section">
         <div className="section-heading">
           <div>
-            <div className="eyebrow">CURATED FROM THE ARCHIVE</div>
+            <div className="eyebrow">TUYỂN CHỌN TỪ BỘ SƯU TẬP</div>
             <h2>
               {today.length
-                ? "On this day in history."
-                : "Some moments change everything."}
+                ? "Ngày này năm xưa."
+                : "Những thời khắc thay đổi thế giới."}
             </h2>
           </div>
           <Link className="text-link" href="/archive">
-            Explore all {events.length} events <ArrowUpRight size={16} />
+            Khám phá toàn bộ {events.length} sự kiện <ArrowUpRight size={16} />
           </Link>
         </div>
         <div className="event-grid">
@@ -53,8 +54,8 @@ export function HomeSections() {
       <section className="section">
         <div className="section-heading">
           <div>
-            <div className="eyebrow">NO BORDERS TO CURIOSITY</div>
-            <h2>A world of possible journeys.</h2>
+            <div className="eyebrow">KHÁM PHÁ KHÔNG BIÊN GIỚI</div>
+            <h2>Mỗi vùng đất, một hành trình.</h2>
           </div>
           <Globe2 size={27} color="var(--gold)" />
         </div>
@@ -73,7 +74,7 @@ export function HomeSections() {
               <Link
                 className="region-tile"
                 href="/play"
-                key={region}
+                key={vi(region)}
                 onClick={() =>
                   update((p) => ({
                     ...p,
@@ -82,8 +83,8 @@ export function HomeSections() {
                 }
               >
                 <span>
-                  <strong>{region}</strong>
-                  <small>{count} events to explore</small>
+                  <strong>{vi(region)}</strong>
+                  <small>{count} sự kiện để khám phá</small>
                 </span>
                 <ArrowUpRight size={20} />
               </Link>
@@ -94,16 +95,16 @@ export function HomeSections() {
       <section className="section archive-preview">
         <div className="section-heading">
           <div>
-            <div className="eyebrow">YOUR GROWING COLLECTION</div>
-            <h2>{data.discovered.length} discoveries. Your own archive.</h2>
+            <div className="eyebrow">BỘ SƯU TẬP CỦA BẠN</div>
+            <h2>{data.discovered.length} khám phá trong bộ sưu tập của bạn.</h2>
             <p>
               {data.discovered.length
-                ? "Revisit the moments you’ve encountered and find the connections between them."
-                : "Every journey leaves a trace. Play to collect these stories and chart your progress."}
+                ? "Gặp lại những thời khắc đã khám phá và tìm mối liên hệ giữa chúng."
+                : "Mỗi hành trình đều để lại dấu ấn. Chơi để lưu những câu chuyện và theo dõi tiến bộ của bạn."}
             </p>
           </div>
           <Link href="/archive?status=discovered" className="text-link">
-            Your archive <ArrowRight size={16} />
+            Bộ sưu tập của bạn <ArrowRight size={16} />
           </Link>
         </div>
         <div className="event-grid">

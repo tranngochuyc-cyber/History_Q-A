@@ -15,7 +15,7 @@ export function Setup() {
   return store.ready ? (
     <SetupForm initial={store.data.settings} />
   ) : (
-    <div className="loading-skeleton" aria-label="Loading saved settings" />
+    <div className="loading-skeleton" aria-label="Đang tải thiết lập đã lưu" />
   );
 }
 function SetupForm({ initial }: { initial: Settings }) {
@@ -41,20 +41,18 @@ function SetupForm({ initial }: { initial: Settings }) {
   return (
     <>
       <div className="page-heading">
-        <div className="eyebrow">CREATE AN EXPEDITION</div>
-        <h1>Let curiosity set the course.</h1>
-        <p>
-          Choose your corner of history. We’ll take care of the discoveries.
-        </p>
+        <div className="eyebrow">TẠO HÀNH TRÌNH</div>
+        <h1>Để trí tò mò dẫn lối.</h1>
+        <p>Chọn góc lịch sử bạn yêu thích và bắt đầu khám phá.</p>
       </div>
       {active && (
         <div className="notice">
           <span>
-            You have a journey in progress: round {data.active!.round} of{" "}
+            Bạn có hành trình chưa hoàn thành: vòng {data.active!.round} trên{" "}
             {data.active!.settings.rounds}.
           </span>
           <Link href="/game" className="text-link">
-            Resume journey <ArrowRight size={16} />
+            Tiếp tục hành trình <ArrowRight size={16} />
           </Link>
         </div>
       )}
@@ -62,7 +60,7 @@ function SetupForm({ initial }: { initial: Settings }) {
         <div className="setup-main">
           <fieldset className="round-picker">
             <legend>
-              <Route size={18} /> Journey length
+              <Route size={18} /> Số vòng chơi
             </legend>
             <div className="round-options">
               {[10, 20, 30].map((n) => (
@@ -73,8 +71,8 @@ function SetupForm({ initial }: { initial: Settings }) {
                   onClick={() => setSettings({ ...settings, rounds: n })}
                 >
                   <strong>{n}</strong>
-                  <span>rounds</span>
-                  <small>~{n} min</small>
+                  <span>vòng</span>
+                  <small>~{n} phút</small>
                 </button>
               ))}
             </div>
@@ -89,35 +87,35 @@ function SetupForm({ initial }: { initial: Settings }) {
         </div>
         <aside className="expedition-summary">
           <Compass size={42} strokeWidth={1} />
-          <div className="eyebrow">YOUR JOURNEY</div>
+          <div className="eyebrow">HÀNH TRÌNH CỦA BẠN</div>
           <h2>
-            {settings.rounds} moments.
+            {settings.rounds} thời khắc.
             <br />
-            Endless perspectives.
+            Muôn vàn góc nhìn.
           </h2>
           <div className="summary-count">
             <strong>{matching.length}</strong>
-            <span>events in your selection</span>
+            <span>sự kiện phù hợp</span>
           </div>
           <p>
             {matching.length < 3
-              ? "At least three events are needed for a journey. Remove one or more filters to widen your selection."
+              ? "Hành trình cần ít nhất ba sự kiện. Hãy bỏ bớt bộ lọc để mở rộng lựa chọn."
               : matching.length < settings.rounds * 3
-                ? "All available events appear before any repeat. In this selection, some events will return with different questions."
-                : "A fresh collection of moments is waiting to be explored."}
+                ? "Các sự kiện được ưu tiên xuất hiện trước khi lặp lại. Một số sự kiện sẽ trở lại với câu hỏi khác."
+                : "Những thời khắc mới đang chờ bạn khám phá."}
           </p>
           <div className="summary-line">
-            <span>Question types</span>
+            <span>Loại câu hỏi</span>
             <strong>3</strong>
           </div>
           <div className="summary-line">
-            <span>Progress</span>
-            <strong>Saved automatically</strong>
+            <span>Tiến trình</span>
+            <strong>Tự động lưu</strong>
           </div>
           {replace && (
             <div className="notice">
-              Starting replaces the unfinished journey. Your discoveries and
-              answers remain saved.
+              Hành trình mới sẽ thay thế lượt chơi chưa hoàn thành. Các khám phá
+              và câu trả lời vẫn được lưu.
             </div>
           )}
           <button
@@ -125,7 +123,7 @@ function SetupForm({ initial }: { initial: Settings }) {
             disabled={matching.length < 3}
             onClick={start}
           >
-            {replace ? "Replace & start journey" : "Begin your journey"}
+            {replace ? "Thay thế và bắt đầu" : "Bắt đầu hành trình"}
             <ArrowRight size={18} />
           </button>
           {replace && (
@@ -133,7 +131,7 @@ function SetupForm({ initial }: { initial: Settings }) {
               className="button ghost full"
               onClick={() => setReplace(false)}
             >
-              Keep current journey
+              Giữ hành trình hiện tại
             </button>
           )}
           <button
@@ -143,7 +141,7 @@ function SetupForm({ initial }: { initial: Settings }) {
               setReplace(false);
             }}
           >
-            Reset filters
+            Đặt lại bộ lọc
           </button>
         </aside>
       </div>
