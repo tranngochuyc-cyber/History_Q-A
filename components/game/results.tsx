@@ -1,5 +1,6 @@
 "use client";
 import Link from "next/link";
+import { EventImage } from "../event/event-card";
 import { useRouter } from "next/navigation";
 import { ArrowRight, Compass, Trophy } from "lucide-react";
 import type { GameSession } from "@/lib/types";
@@ -115,6 +116,7 @@ export function GameResults({ game }: { game: GameSession }) {
         {game.answers.map((a, i) => (
           <Link href={`/event/${eventById(a.eventId).slug}`} key={a.id}>
             <span>{String(i + 1).padStart(2, "0")}</span>
+            <EventImage event={eventById(a.eventId)} />
             <strong>{eventById(a.eventId).title}</strong>
             <span className={a.correct ? "success-text" : "muted"}>
               {a.correct ? "Correct" : "Reviewed"} · +{a.points}

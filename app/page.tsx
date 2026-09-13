@@ -11,11 +11,7 @@ export default function Home() {
             <span className="tiny-line" /> A JOURNEY THROUGH HUMAN HISTORY
           </div>
           <h1>
-            The past is vast.
-            <br />
-            Your next discovery
-            <br />
-            <em>starts here.</em>
+            The past is vast. <em>Find your next discovery.</em>
           </h1>
           <p>
             Three events. One choice.
