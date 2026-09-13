@@ -54,7 +54,7 @@ export default function Page() {
           </p>
         </section>
         <section>
-          <h2>Bộ sưu tập lớn lên cùng bạn.</h2>
+          <h2>Kho lịch sử lớn lên cùng bạn.</h2>
           <p>
             Tiến trình và hành trình chưa hoàn thành tự động lưu trong trình
             duyệt. Đọc hồ sơ luôn miễn phí; trả lời câu hỏi sẽ lưu sự kiện. Độ
@@ -76,10 +76,10 @@ export default function Page() {
           </p>
           <p>
             Thời kỳ là quy ước điều hướng: Cổ đại trước năm 500; Trung đại
-            500–1499; Cận đại sơ kỳ 1500–1799; Cận đại 1800–1944; Hiện đại từ
-            1945. Chuyển tiếp lịch sử khác nhau giữa các vùng. Tác phẩm không có
-            năm chính xác được ghi khoảng niên đại và không dùng cho câu hỏi
-            đoán năm.
+            500–1499; Cận đại 1500–1799; Hiện đại 1800–1944; Hiện đại từ 1945.
+            Chuyển tiếp lịch sử khác nhau giữa các vùng. Tác phẩm không có năm
+            chính xác được ghi khoảng niên đại và không dùng cho câu hỏi đoán
+            năm.
           </p>
         </section>
         <section>

@@ -39,11 +39,11 @@ export function Archive() {
     <>
       <div className="page-heading archive-heading">
         <div>
-          <div className="eyebrow">BỘ SƯU TẬP CHRONOQUEST</div>
+          <div className="eyebrow">KHO LỊCH SỬ CHRONOQUEST</div>
           <h1>Một thế giới đáng ghi nhớ.</h1>
           <p>
             Khám phá toàn bộ sự kiện. Hoàn thành câu hỏi để lưu những câu chuyện
-            vào bộ sưu tập cá nhân.
+            vào kho lịch sử cá nhân.
           </p>
         </div>
         <div className="collection-counter">
@@ -66,8 +66,8 @@ export function Archive() {
         <label className="search-box">
           <Search size={18} />
           <input
-            placeholder="Tìm trong bộ sưu tập…"
-            aria-label="Tìm trong bộ sưu tập"
+            placeholder="Tìm trong kho lịch sử…"
+            aria-label="Tìm trong kho lịch sử"
             value={search}
             onChange={(e) => {
               setSearch(e.target.value);
@@ -151,7 +151,7 @@ export function Archive() {
           <h2>Không có sự kiện phù hợp.</h2>
           <p>
             {status === "discovered" && !data.discovered.length
-              ? "Bộ sưu tập bắt đầu từ hành trình đầu tiên của bạn."
+              ? "Kho lịch sử bắt đầu từ hành trình đầu tiên của bạn."
               : "Hãy thử bỏ bớt bộ lọc."}
           </p>
           <button

@@ -30,7 +30,7 @@ export function HomeSections() {
       <section className="section featured-section">
         <div className="section-heading">
           <div>
-            <div className="eyebrow">TUYỂN CHỌN TỪ BỘ SƯU TẬP</div>
+            <div className="eyebrow">TUYỂN CHỌN TỪ KHO LỊCH SỬ</div>
             <h2>
               {today.length
                 ? "Ngày này năm xưa."
@@ -95,8 +95,8 @@ export function HomeSections() {
       <section className="section archive-preview">
         <div className="section-heading">
           <div>
-            <div className="eyebrow">BỘ SƯU TẬP CỦA BẠN</div>
-            <h2>{data.discovered.length} khám phá trong bộ sưu tập của bạn.</h2>
+            <div className="eyebrow">KHO LỊCH SỬ CỦA BẠN</div>
+            <h2>{data.discovered.length} khám phá trong kho lịch sử của bạn.</h2>
             <p>
               {data.discovered.length
                 ? "Gặp lại những thời khắc đã khám phá và tìm mối liên hệ giữa chúng."
@@ -104,7 +104,7 @@ export function HomeSections() {
             </p>
           </div>
           <Link href="/archive?status=discovered" className="text-link">
-            Bộ sưu tập của bạn <ArrowRight size={16} />
+            Kho lịch sử của bạn <ArrowRight size={16} />
           </Link>
         </div>
         <div className="event-grid">

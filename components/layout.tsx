@@ -23,7 +23,7 @@ export function Navbar() {
         {[
           ["/", "Khám phá", Compass],
           ["/play", "Chơi", Play],
-          ["/archive", "Bộ sưu tập", Library],
+          ["/archive", "Kho lịch sử", Library],
           ["/stats", "Thống kê", ChartNoAxesColumn],
         ].map(([href, label, Icon]) => (
           <Link
@@ -38,7 +38,7 @@ export function Navbar() {
         ))}
       </nav>
       <Link href="/play" className="nav-cta">
-        Bắt đầu hành trình <ArrowUpRight size={16} />
+        Chơi ngay <ArrowUpRight size={16} />
       </Link>
     </header>
   );

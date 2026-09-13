@@ -20,7 +20,7 @@ export function EventDetail({ event }: { event: HistoricalEvent }) {
   return (
     <>
       <Link className="text-link back-link" href="/archive">
-        <ArrowLeft size={16} /> Về bộ sưu tập
+        <ArrowLeft size={16} /> Về kho lịch sử
       </Link>
       <div className="detail-hero">
         <div>
@@ -111,7 +111,7 @@ export function EventDetail({ event }: { event: HistoricalEvent }) {
             <h3>
               {discovered ? (
                 <>
-                  <Check size={17} /> Đã có trong bộ sưu tập
+                  <Check size={17} /> Đã có trong kho lịch sử
                 </>
               ) : (
                 <>

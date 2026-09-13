@@ -173,7 +173,7 @@ export function Game() {
                     className="button primary"
                     onClick={() => dispatch({ type: "CONTINUE" })}
                   >
-                    Đến câu hỏi <ArrowRight size={18} />
+                    Tiếp tục đến câu hỏi <ArrowRight size={18} />
                   </button>
                 </div>
               ) : game.phase === "QUESTION" ? (
@@ -215,8 +215,8 @@ export function Game() {
                   <div className="discovery-note">
                     <BookmarkPlus size={18} />
                     {game.initialDiscovered.includes(event.id)
-                      ? "Kiến thức đã được lưu vào bộ sưu tập."
-                      : "Đã khám phá sự kiện và lưu vào bộ sưu tập."}
+                      ? "Kiến thức đã được lưu vào kho lịch sử."
+                      : "Đã khám phá sự kiện và lưu vào kho lịch sử."}
                   </div>
                   <button
                     className="button primary"

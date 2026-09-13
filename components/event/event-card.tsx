@@ -1,6 +1,7 @@
 "use client";
 import { vi } from "@/lib/i18n";
 import Image from "next/image";
+import { imagePresentation } from "@/lib/data/image-presentation";
 import Link from "next/link";
 import { useState } from "react";
 import { ArrowUpRight, LockKeyhole, Check, Compass } from "lucide-react";
@@ -15,11 +16,14 @@ export function EventImage({
   hideYear?: boolean;
 }) {
   const [failed, setFailed] = useState(false);
+  const framing = imagePresentation[event.id] ?? { fit: "cover", position: "center center" };
   return (
     <div
       className={`event-image era-${event.era.toLowerCase().replace(" ", "-")}`}
     >
       {event.image && !failed ? (
+        <>
+        {framing.fit === "contain" && <div className="historical-image-fill" aria-hidden="true" style={{ backgroundImage: `url("${event.image}")` }} />}
         <Image
           src={event.image}
           alt={
@@ -30,8 +34,9 @@ export function EventImage({
           fill
           sizes="(max-width:600px) 100vw, (max-width:1000px) 50vw, 33vw"
           onError={() => setFailed(true)}
-          style={{ objectFit: "cover" }}
+          style={{ objectFit: framing.fit, objectPosition: framing.position }}
         />
+        </>
       ) : (
         <div className="artifact-fallback">
           <Compass strokeWidth={0.6} size={90} />
@@ -119,3 +124,5 @@ export function EventCard({
     </Link>
   );
 }
+
+

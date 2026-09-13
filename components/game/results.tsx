@@ -104,7 +104,7 @@ export function GameResults({ game }: { game: GameSession }) {
           Chơi lại <ArrowRight size={17} />
         </button>
         <Link className="button" href="/play">
-          Đổi bộ lọc
+          Đổi lựa chọn
         </Link>
         <Link className="button ghost" href="/archive?status=discovered">
           Xem sự kiện đã khám phá
