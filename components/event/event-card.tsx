@@ -17,6 +17,7 @@ export function EventImage({
   hideYear?: boolean;
 }) {
   const [failed, setFailed] = useState(false);
+  const imageSrc = (process.env.NEXT_PUBLIC_BASE_PATH ?? "") + (event.image ?? "");
   const framing = imagePresentation[event.id] ?? { fit: "cover", position: "center center" };
   return (
     <div
@@ -24,9 +25,9 @@ export function EventImage({
     >
       {event.image && !failed ? (
         <>
-        {framing.fit === "contain" && <div className="historical-image-fill" aria-hidden="true" style={{ backgroundImage: `url("${event.image}")` }} />}
+        {framing.fit === "contain" && <div className="historical-image-fill" aria-hidden="true" style={{ backgroundImage: `url("${imageSrc}")` }} />}
         <Image
-          src={event.image}
+          src={imageSrc}
           alt={
             hideYear
               ? `Ảnh lịch sử liên quan đến ${event.title}`
@@ -125,6 +126,7 @@ export function EventCard({
     </Link><BookmarkButton id={event.id} /></div>
   );
 }
+
 
 
 

@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   },
   description:
     "Ba sự kiện. Một lựa chọn. Khám phá lịch sử thế giới, thử tài kiến thức và xây dựng bộ sưu tập riêng.",
-  icons: { icon: "/favicon.svg" },
+  icons: { icon: (process.env.NEXT_PUBLIC_BASE_PATH ?? "") + "/favicon.svg" },
   openGraph: {
     title: "ChronoQuest",
     description: "Khám phá lịch sử qua từng sự kiện.",
@@ -36,3 +36,4 @@ export default function RootLayout({
     </html>
   );
 }
+
