@@ -1,6 +1,11 @@
 import type { Country } from "../types";
 const countryLabels = new Intl.DisplayNames(["vi"], { type: "region" });
 const rows = [
+  ["TH","Thailand","Asia","Southeast Asia"],["ID","Indonesia","Asia","Southeast Asia"],
+  ["MY","Malaysia","Asia","Southeast Asia"],["SG","Singapore","Asia","Southeast Asia"],
+  ["PH","Philippines","Asia","Southeast Asia"],["KH","Cambodia","Asia","Southeast Asia"],
+  ["IR","Iran","Asia","Middle East"],["AR","Argentina","Americas","South America"],
+  ["ET","Ethiopia","Africa","Africa"],["ML","Mali","Africa","Africa"],["CH","Switzerland","Europe","Europe"],
   ["VN", "Vietnam", "Asia", "Southeast Asia"],
   ["JP", "Japan", "Asia", "East Asia"],
   ["CN", "China", "Asia", "East Asia"],
@@ -47,3 +52,4 @@ export const countries: Country[] = rows.map(
 export const regions = [...new Set(countries.map((c) => c.region))];
 export const countryName = (id: string) =>
   countries.find((c) => c.id === id)?.name ?? id;
+

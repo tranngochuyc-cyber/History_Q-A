@@ -1,5 +1,6 @@
 "use client";
 import Link from "next/link";
+import { GlobalSearch } from "./global-search";
 import { usePathname } from "next/navigation";
 import {
   Hourglass,
@@ -37,6 +38,7 @@ export function Navbar() {
           </Link>
         ))}
       </nav>
+      <GlobalSearch />
       <Link href="/play" className="nav-cta">
         Chơi ngay <ArrowUpRight size={16} />
       </Link>
@@ -57,3 +59,4 @@ export function Footer() {
     </footer>
   );
 }
+

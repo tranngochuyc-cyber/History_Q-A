@@ -286,5 +286,275 @@
     "source": "https://commons.wikimedia.org/wiki/File:Kwame_Nkrumah_Portrait,_The_National_Archives_UK.jpg",
     "original": "https://upload.wikimedia.org/wikipedia/commons/5/5c/Kwame_Nkrumah_Portrait%2C_The_National_Archives_UK.jpg",
     "license": "OGL v1.0"
+  },
+  "bach-dang-938": {
+    "url": "/images/bach-dang-938.webp",
+    "alt": "Tư liệu minh họa: Chiến thắng Bạch Đằng",
+    "credit": " · Wikimedia Commons",
+    "source": "https://commons.wikimedia.org/wiki/File:Five_Dynasties_Ten_Kingdoms_923_CE.png"
+  },
+  "bach-dang-1288": {
+    "url": "/images/bach-dang-1288.webp",
+    "alt": "Tư liệu minh họa: Bạch Đằng chống quân Nguyên",
+    "credit": " · Wikimedia Commons",
+    "source": "https://commons.wikimedia.org/wiki/File:Battle_of_Bach_Dang_river.jpg"
+  },
+  "thang-long": {
+    "url": "/images/thang-long.webp",
+    "alt": "Tư liệu minh họa: Dời đô ra Thăng Long",
+    "credit": " · Wikimedia Commons",
+    "source": "https://commons.wikimedia.org/wiki/File:T%C6%B0%E1%BB%A3ng_L%C3%BD_Th%C3%A1i_T%E1%BB%95_2.jpg"
+  },
+  "lam-son": {
+    "url": "/images/lam-son.webp",
+    "alt": "Tư liệu minh họa: Khởi nghĩa Lam Sơn",
+    "credit": " · Wikimedia Commons",
+    "source": "https://commons.wikimedia.org/wiki/File:Map_of_the_Lam_S%C6%A1n_uprising_(en).png"
+  },
+  "doi-moi": {
+    "url": "/images/doi-moi.webp",
+    "alt": "Chân dung Nguyễn Văn Linh",
+    "credit": "CalCoWSpiBudSu · CC BY 4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:T%C3%A1m_L%C3%AA_Thanh_v%C3%A0_Nguy%E1%BB%85n_V%C4%83n_Linh_(cropped)_(2).jpg"
+  },
+  "indonesia-independence": {
+    "url": "/images/indonesia-independence.webp",
+    "alt": "Tư liệu minh họa: Indonesia tuyên bố độc lập",
+    "credit": " · Wikimedia Commons",
+    "source": "https://commons.wikimedia.org/wiki/File:Indonesia_declaration_of_independence_17_August_1945.jpg"
+  },
+  "angkor-wat": {
+    "url": "/images/angkor-wat.webp",
+    "alt": "Tư liệu minh họa: Angkor Wat được xây dựng",
+    "credit": " · Wikimedia Commons",
+    "source": "https://commons.wikimedia.org/wiki/File:Angkor_Wat.jpg"
+  },
+  "sekigahara": {
+    "url": "/images/sekigahara.webp",
+    "alt": "Tư liệu minh họa: Trận Sekigahara",
+    "credit": "User LordAmeth on en.wikipediaCollection of The Town of Sekigahara Archive of History and Cultural Anthropology · Public domain",
+    "source": "https://commons.wikimedia.org/wiki/File:Sekigaharascreen.jpg"
+  },
+  "taj-mahal": {
+    "url": "/images/taj-mahal.webp",
+    "alt": "Tư liệu minh họa: Khởi công Taj Mahal",
+    "credit": " · Wikimedia Commons",
+    "source": "https://commons.wikimedia.org/wiki/File:Taj_Mahal_(Edited).jpeg"
+  },
+  "mansa-musa": {
+    "url": "/images/mansa-musa.webp",
+    "alt": "Tư liệu minh họa: Mansa Musa hành hương tới Mecca",
+    "credit": " · Wikimedia Commons",
+    "source": "https://commons.wikimedia.org/wiki/File:Catalan_Atlas_BNF_Sheet_6_Mansa_Musa_(cropped).jpg"
+  },
+  "ngoc-hoi": {
+    "url": "/images/ngoc-hoi.webp",
+    "alt": "Tư liệu minh họa: Ngọc Hồi – Đống Đa",
+    "credit": " · Wikimedia Commons",
+    "source": "https://commons.wikimedia.org/wiki/File:Quang_Trung_statue_02.jpg"
+  },
+  "perry-japan": {
+    "url": "/images/perry-japan.webp",
+    "alt": "Tư liệu minh họa: Hạm đội Perry đến Nhật Bản",
+    "credit": " · Wikimedia Commons",
+    "source": "https://commons.wikimedia.org/wiki/File:Japanese_1854_print_Commodore_Perry.jpg"
+  },
+  "satsuma": {
+    "url": "/images/satsuma.webp",
+    "alt": "Tư liệu minh họa: Cuộc nổi dậy Satsuma",
+    "credit": " · Wikimedia Commons",
+    "source": "https://commons.wikimedia.org/wiki/File:Satsuma_rebeliion.svg"
+  },
+  "russo-japanese": {
+    "url": "/images/russo-japanese.webp",
+    "alt": "Tư liệu minh họa: Chiến tranh Nga – Nhật",
+    "credit": "Original uploader and author was Dustandshadow at en.wikipedia · Public domain",
+    "source": "https://commons.wikimedia.org/wiki/File:RUSSOJAPANESEWARIMAGE.jpg"
+  },
+  "hangul": {
+    "url": "/images/hangul.webp",
+    "alt": "Tư liệu minh họa: Công bố chữ Hangul",
+    "credit": "Sejong the Great of Joseon · Public domain",
+    "source": "https://commons.wikimedia.org/wiki/File:Hunminjeongum.jpg"
+  },
+  "silk-road": {
+    "url": "/images/silk-road.webp",
+    "alt": "Tư liệu minh họa: Trương Khiên mở đường giao lưu Tây Vực",
+    "credit": "PHG · Public domain",
+    "source": "https://commons.wikimedia.org/wiki/File:ZhangQianTravels.jpg"
+  },
+  "zheng-he": {
+    "url": "/images/zheng-he.webp",
+    "alt": "Tư liệu minh họa: Chuyến hải hành đầu tiên của Trịnh Hòa",
+    "credit": " · Wikimedia Commons",
+    "source": "https://commons.wikimedia.org/wiki/File:2016_Malakka%2C_Stadhuys_(09).jpg"
+  },
+  "xinhai": {
+    "url": "/images/xinhai.webp",
+    "alt": "Tư liệu minh họa: Cách mạng Tân Hợi",
+    "credit": " · Wikimedia Commons",
+    "source": "https://commons.wikimedia.org/wiki/File:Opstanden%2C_revolutie%2C_SFA022823302.jpg"
+  },
+  "salt-march": {
+    "url": "/images/salt-march.webp",
+    "alt": "Tư liệu minh họa: Cuộc tuần hành Muối",
+    "credit": " · Wikimedia Commons",
+    "source": "https://commons.wikimedia.org/wiki/File:Marche_sel.jpg"
+  },
+  "persepolis": {
+    "url": "/images/persepolis.webp",
+    "alt": "Tư liệu minh họa: Khởi dựng Persepolis",
+    "credit": " · Wikimedia Commons",
+    "source": "https://commons.wikimedia.org/wiki/File:Darius_I.jpg"
+  },
+  "athenian-democracy": {
+    "url": "/images/athenian-democracy.webp",
+    "alt": "Tư liệu minh họa: Cải cách dân chủ ở Athens",
+    "credit": "Unknown authorUnknown author · Attribution",
+    "source": "https://commons.wikimedia.org/wiki/File:Cleisthenes.jpg"
+  },
+  "augustus": {
+    "url": "/images/augustus.webp",
+    "alt": "Tư liệu minh họa: Augustus trở thành hoàng đế La Mã",
+    "credit": " · Wikimedia Commons",
+    "source": "https://commons.wikimedia.org/wiki/File:Augustus_of_Prima_Porta.jpg"
+  },
+  "gutenberg": {
+    "url": "/images/gutenberg.webp",
+    "alt": "Tư liệu minh họa: Kinh Thánh Gutenberg",
+    "credit": " · Wikimedia Commons",
+    "source": "https://commons.wikimedia.org/wiki/File:Gutenberg_Bible%2C_Lenox_Copy%2C_New_York_Public_Library%2C_2009._Pic_01.jpg"
+  },
+  "newton": {
+    "url": "/images/newton.webp",
+    "alt": "Tư liệu minh họa: Newton xuất bản Principia",
+    "credit": " · Wikimedia Commons",
+    "source": "https://commons.wikimedia.org/wiki/File:Newton's_Principia_title_page.png"
+  },
+  "darwin": {
+    "url": "/images/darwin.webp",
+    "alt": "Tư liệu minh họa: Darwin xuất bản Nguồn gốc các loài",
+    "credit": " · Wikimedia Commons",
+    "source": "https://commons.wikimedia.org/wiki/File:Origin_of_Species_title_page.jpg"
+  },
+  "jenner": {
+    "url": "/images/jenner.webp",
+    "alt": "Tư liệu minh họa: Jenner thử nghiệm chủng ngừa đậu mùa",
+    "credit": " · Wikimedia Commons",
+    "source": "https://commons.wikimedia.org/wiki/File:Edward_Jenner.jpg"
+  },
+  "dna-structure": {
+    "url": "/images/dna-structure.webp",
+    "alt": "Tư liệu minh họa: Công bố cấu trúc DNA",
+    "credit": " · Wikimedia Commons",
+    "source": "https://commons.wikimedia.org/wiki/File:b8"
+  },
+  "sputnik": {
+    "url": "/images/sputnik.webp",
+    "alt": "Tư liệu minh họa: Sputnik 1 lên quỹ đạo",
+    "credit": " · Wikimedia Commons",
+    "source": "https://commons.wikimedia.org/wiki/File:%D0%9F%D0%B5%D1%80%D0%B2%D1%8B%D0%B9_%D0%B2_%D0%BC%D0%B8%D1%80%D0%B5_%D0%B8%D1%81%D0%BA%D1%83%D1%81%D1%81%D1%82%D0%B2%D0%B5%D0%BD%D0%BD%D1%8B%D0%B9_%D1%81%D0%BF%D1%83%D1%82%D0%BD%D0%B8%D0%BA_%D0%97%D0%B5%D0%BC%D0%BB%D0%B8.jpg"
+  },
+  "web": {
+    "url": "/images/web.webp",
+    "alt": "Chân dung Tim Berners-Lee",
+    "credit": "Summit · CC BY 4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Tim_Berners-Lee_at_the_2025_Web_Summit_(Cropped).jpg"
+  },
+  "mexico-independence": {
+    "url": "/images/mexico-independence.webp",
+    "alt": "Tư liệu minh họa: Khởi đầu độc lập Mexico",
+    "credit": " · Wikimedia Commons",
+    "source": "https://commons.wikimedia.org/wiki/File:Dolores_hidalgo.jpg"
+  },
+  "argentina-independence": {
+    "url": "/images/argentina-independence.webp",
+    "alt": "Tư liệu minh họa: Argentina tuyên bố độc lập",
+    "credit": "Francisco Fortuny · Public domain",
+    "source": "https://commons.wikimedia.org/wiki/File:El-Congreso-de-Tucum%C3%A1n-1816-Francisco-Fortuny.jpg"
+  },
+  "machu-picchu": {
+    "url": "/images/machu-picchu.webp",
+    "alt": "Tư liệu minh họa: Machu Picchu được giới thiệu rộng rãi",
+    "credit": " · Wikimedia Commons",
+    "source": "https://commons.wikimedia.org/wiki/File:Senator_Hiram_Bingham_of_Conn.%2C_(1-9-25)_LCCN2016839105_(3x4a).jpg"
+  },
+  "brazil-abolition": {
+    "url": "/images/brazil-abolition.webp",
+    "alt": "Tư liệu minh họa: Brazil bãi bỏ chế độ nô lệ",
+    "credit": " · Wikimedia Commons",
+    "source": "https://commons.wikimedia.org/wiki/File:Lei_%C3%81urea_(Golden_Law).tif"
+  },
+  "adwa": {
+    "url": "/images/adwa.webp",
+    "alt": "Tư liệu minh họa: Chiến thắng Adwa",
+    "credit": " · Wikimedia Commons",
+    "source": "https://commons.wikimedia.org/wiki/File:Adoua_1.jpg"
+  },
+  "tutankhamun": {
+    "url": "/images/tutankhamun.webp",
+    "alt": "Tư liệu minh họa: Phát hiện lăng Tutankhamun",
+    "credit": " · Wikimedia Commons",
+    "source": "https://commons.wikimedia.org/wiki/File:The_Moment_Carter_Opens_the_Shrine.jpg"
+  },
+  "waitangi": {
+    "url": "/images/waitangi.webp",
+    "alt": "Tư liệu minh họa: Hiệp ước Waitangi",
+    "credit": "William Hobson, James Freeman, and James Busby (English version); Henry Williams and Edward Williams (Māori translation) · Public domain",
+    "source": "https://commons.wikimedia.org/wiki/File:Treatyofwaitangi.jpg"
+  },
+  "australia-referendum": {
+    "url": "/images/australia-referendum.webp",
+    "alt": "Tư liệu minh họa: Trưng cầu dân ý Australia",
+    "credit": " · Wikimedia Commons",
+    "source": "https://commons.wikimedia.org/wiki/File:1967_Australian_referendum_(Aboriginals).svg"
+  },
+  "tordesillas": {
+    "url": "/images/tordesillas.webp",
+    "alt": "Tư liệu minh họa: Hiệp ước Tordesillas",
+    "credit": " · Wikimedia Commons",
+    "source": "https://commons.wikimedia.org/wiki/File:Treaty_of_Tordesillas.jpg"
+  },
+  "human-rights": {
+    "url": "/images/human-rights.webp",
+    "alt": "Tư liệu minh họa: Tuyên ngôn Quốc tế Nhân quyền",
+    "credit": " · Wikimedia Commons",
+    "source": "https://commons.wikimedia.org/wiki/File:Eleanor_Roosevelt_UDHR.jpg"
+  },
+  "asean": {
+    "url": "/images/asean.webp",
+    "alt": "Tư liệu minh họa: ASEAN được thành lập",
+    "credit": " · Wikimedia Commons",
+    "source": "https://commons.wikimedia.org/wiki/File:Thanat_Khoman.jpg"
+  },
+  "hammurabi": {
+    "url": "/images/hammurabi.webp",
+    "alt": "Tư liệu minh họa: Bộ luật Hammurabi",
+    "credit": " · Wikimedia Commons",
+    "source": "https://commons.wikimedia.org/wiki/File:P1050763_Louvre_code_Hammurabi_face_rwk.JPG"
+  },
+  "gagarin": {
+    "url": "/images/gagarin.webp",
+    "alt": "Tư liệu minh họa: Gagarin bay vào vũ trụ",
+    "credit": " · Wikimedia Commons",
+    "source": "https://commons.wikimedia.org/wiki/File:Yuri_Gagarin_with_awards_(cropped)_2.jpg"
+  },
+  "haiti-earthquake": {
+    "url": "/images/haiti-earthquake.webp",
+    "alt": "Tư liệu minh họa: Động đất Haiti",
+    "credit": " · Wikimedia Commons",
+    "source": "https://commons.wikimedia.org/wiki/File:Ruins_of_Haiti_National_Palace_-_Port_au_Prince_2012.jpg"
+  },
+  "suez-nationalization": {
+    "url": "/images/suez-nationalization.webp",
+    "alt": "Tư liệu minh họa: Ai Cập quốc hữu hóa kênh Suez",
+    "credit": " · Wikimedia Commons",
+    "source": "https://commons.wikimedia.org/wiki/File:Stevan_Kragujevic%2C_Gamal_Abdel_Naser_u_Beogradu%2C_1962.jpg"
+  },
+  "un-charter": {
+    "url": "/images/un-charter.webp",
+    "alt": "Tư liệu minh họa: Hiến chương Liên Hợp Quốc",
+    "credit": "United Nations. · Public domain",
+    "source": "https://commons.wikimedia.org/wiki/File:Uncharter.pdf"
   }
 }

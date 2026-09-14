@@ -178,6 +178,8 @@ export function Game() {
                 </div>
               ) : game.phase === "QUESTION" ? (
                 <QuizRenderer
+                  usedHint={(game.hintQuestionIds ?? []).includes(q.id)}
+                  onHint={() => dispatch({ type: "HINT" })}
                   key={q.id}
                   question={q}
                   onAnswer={(value) => dispatch({ type: "ANSWER", value })}
@@ -246,6 +248,7 @@ export function Game() {
     </>
   );
 }
+
 
 
 

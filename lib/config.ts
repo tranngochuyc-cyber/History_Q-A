@@ -20,6 +20,7 @@ export const CATEGORIES = [
   "Disaster",
   "Diplomacy",
   "Social Change",
+  "Art", "Medicine", "Space",
 ];
 export const DEFAULT_SETTINGS: Settings = {
   rounds: 10,
@@ -29,3 +30,4 @@ export const DEFAULT_SETTINGS: Settings = {
   categories: [],
   difficulty: "All",
 };
+

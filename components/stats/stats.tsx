@@ -5,7 +5,7 @@ import { Trophy, LockKeyhole, ArrowRight, Check } from "lucide-react";
 import { useProgress } from "../providers";
 import { events } from "@/lib/data/events";
 import { countries } from "@/lib/data/countries";
-import { CATEGORIES } from "@/lib/config";
+import { CATEGORIES, ERAS } from "@/lib/config";
 import { performance } from "@/lib/game/progress";
 import { achievements } from "@/lib/game/achievements";
 export function Stats() {
@@ -42,6 +42,9 @@ export function Stats() {
     }))
     .filter((c) => c.total > 0)
     .sort((a, b) => b.total - a.total);
+  const eraStats = ERAS.map(name => ({ name, ...performance(data.answers.filter(a=>events.some(e=>e.id===a.eventId && e.era===name))) }));
+  const strengths = [...countryStats,...categories,...eraStats].filter(r=>r.total>0).sort((a,b)=>b.accuracy-a.accuracy||b.total-a.total).slice(0,5);
+  const gaps = ERAS.map(name=>{ const pool=events.filter(e=>e.era===name); return {name,total:pool.length,seen:pool.filter(e=>data.discovered.includes(e.id)).length}; }).sort((a,b)=>a.seen/a.total-b.seen/b.total).slice(0,3);
   return (
     <>
       <div className="page-heading">
@@ -60,7 +63,7 @@ export function Stats() {
       <div className="stat-grid dashboard-stats">
         {[
           [stats.total, "Câu hỏi đã trả lời"],
-          [stats.correct, "Câu trả lời đúng"],
+          [new Set(events.filter(e=>data.discovered.includes(e.id)).map(e=>e.era)).size, "Thời kỳ đã khám phá"],
           [`${stats.accuracy}%`, "Độ chính xác"],
           [data.games.length, "Hành trình hoàn thành"],
           [data.discovered.length, "Sự kiện đã khám phá"],
@@ -97,6 +100,7 @@ export function Stats() {
           )}
         </section>
       </div>
+      <div className="stats-insights"><section className="performance-panel"><h2>Thế mạnh của bạn</h2>{strengths.length ? <PerformanceBars rows={strengths.map(r=>({...r,name:vi(r.name)}))}/> : <p>Trả lời câu hỏi để nhận gợi ý theo kết quả của bạn.</p>}</section><section className="performance-panel"><h2>Nên khám phá thêm</h2><p>Tỷ lệ sự kiện đã khám phá trong mỗi thời kỳ.</p>{gaps.map(g=><Link className="exploration-gap" key={g.name} href={"/archive?era="+encodeURIComponent(g.name)}><span>{vi(g.name)}</span><strong>{Math.round(g.seen/g.total*100)}%</strong><div className="progress-track"><div style={{width:(g.seen/g.total*100)+"%"}}/></div></Link>)}</section></div>
       <section className="achievements-section">
         <div className="section-heading">
           <div>
@@ -167,3 +171,5 @@ function PerformanceBars({
     </div>
   );
 }
+
+

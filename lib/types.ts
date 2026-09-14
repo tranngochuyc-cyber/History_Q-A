@@ -25,6 +25,8 @@ export interface HistoricalEvent {
   summary: string;
   shortSummary: string;
   importance: number;
+  significance?: string;
+  fact?: string;
   scale: "National" | "Regional" | "Global";
   difficulty: Difficulty;
   locationText: string;
@@ -103,12 +105,16 @@ export interface GameSession {
   questionId?: string;
   answers: GameAnswer[];
   initialDiscovered: string[];
+  hintQuestionIds?: string[];
 }
 export interface Progress {
   version: 1;
+  bookmarks?: string[];
+  recent?: string[];
   answers: GameAnswer[];
   games: GameSession[];
   discovered: string[];
   active: GameSession | null;
   settings: Settings;
 }
+

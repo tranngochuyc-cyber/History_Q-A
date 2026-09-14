@@ -1,4 +1,5 @@
 const labels: Record<string, string> = {
+  Art: "Nghệ thuật", Medicine: "Y học", Space: "Không gian",
   All: "Tất cả",
   Easy: "Dễ",
   Medium: "Vừa",
@@ -46,3 +47,4 @@ export const searchText = (value: string) =>
     .replace(/đ/g, "d")
     .replace(/Đ/g, "D")
     .toLocaleLowerCase("vi-VN");
+

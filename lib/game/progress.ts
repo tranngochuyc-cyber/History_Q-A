@@ -2,6 +2,7 @@ import type { Progress, GameAnswer } from "../types";
 import { DEFAULT_SETTINGS } from "../config";
 export const emptyProgress = (): Progress => ({
   version: 1,
+  bookmarks: [], recent: [],
   answers: [],
   games: [],
   discovered: [],
@@ -24,3 +25,4 @@ export function mastery(answers: GameAnswer[], eventId: string) {
     completed: new Set(a.map((v) => v.questionId)).size,
   };
 }
+

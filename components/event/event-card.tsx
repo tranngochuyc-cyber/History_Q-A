@@ -1,6 +1,7 @@
 "use client";
 import { vi } from "@/lib/i18n";
 import Image from "next/image";
+import { BookmarkButton } from "../bookmark-button";
 import { imagePresentation } from "@/lib/data/image-presentation";
 import Link from "next/link";
 import { useState } from "react";
@@ -119,10 +120,11 @@ export function EventCard({
       {inner}
     </button>
   ) : (
-    <Link className={cardClass} href={`/event/${event.slug}`}>
+    <div className="discovery-card"><Link className={cardClass} href={`/event/${event.slug}`}>
       {inner}
-    </Link>
+    </Link><BookmarkButton id={event.id} /></div>
   );
 }
+
 
 

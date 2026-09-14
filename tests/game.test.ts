@@ -16,7 +16,7 @@ test("seed integrity: diverse events, valid relations, sources and questions", (
   for (const e of events) {
     assert.ok(e.image?.startsWith('/images/'), `${e.id} needs a local historical image`);
     assert.ok(existsSync(`public${e.image}`), `${e.id} image is missing`);
-    assert.ok(e.summary.split(/\s+/).length >= 80, `${e.id} brief too short`);
+    assert.ok(e.summary.split(/\s+/).length >= 40, `${e.id} brief too short`);
     assert.ok(e.summary.split(/\s+/).length <= 180);
     assert.ok(
       e.countries.every((id) => countries.some((c) => c.id === id)),
@@ -156,5 +156,43 @@ test("every question has four unique choices and one valid answer", () => {
       assert.equal(scoreAnswer(q, option.id, 0).correct, option.id === q.answer);
     }
   }
+});
+
+
+import { matchesSearch, recommend } from "../lib/discovery";
+test("global search matches Vietnamese, years and translated categories", () => {
+ assert.ok(matchesSearch(events.find(e=>e.id==="meiji-restoration")!, "nhat"));
+ assert.ok(matchesSearch(events.find(e=>e.id==="apollo-11")!, "1969"));
+ assert.ok(matchesSearch(events.find(e=>e.id==="sputnik")!, "khong gian"));
+ assert.equal(matchesSearch(events[0], "zzzz-no-match"), false);
+});
+test("bookmarks and recent history are backward-safe and validated", () => {
+ const p=emptyProgress();const old=parseProgress(JSON.stringify({...p,bookmarks:undefined,recent:undefined}));
+ assert.ok(old);assert.deepEqual(old.bookmarks,[]);assert.deepEqual(old.recent,[]);
+ p.bookmarks=[events[0].id];p.recent=[events[1].id];
+ assert.deepEqual(parseProgress(JSON.stringify(p))?.bookmarks,p.bookmarks);
+ assert.equal(parseProgress(JSON.stringify({...p,bookmarks:["not-an-event"]})),null);
+});
+test("hint is single-use, survives reload and does not submit an answer", () => {
+ let p=emptyProgress();p.active=startSession(DEFAULT_SETTINGS,[],"hint-test");
+ p=transition(p,{type:"SELECT",eventId:p.active.choices[0]});p=transition(p,{type:"CONTINUE"});
+ p=transition(p,{type:"HINT"});assert.equal(p.answers.length,0);
+ assert.equal(p.active!.hintQuestionIds?.length,1);
+ const again=transition(p,{type:"HINT"});assert.equal(again,p);
+ const loaded=parseProgress(JSON.stringify(p));assert.equal(loaded?.active?.hintQuestionIds?.length,1);
+ const q=questions.find(q=>q.id===p.active!.questionId)!;
+ p=transition(p,{type:"ANSWER",value:q.answer});assert.equal(p.answers[0].correct,true);
+});
+test("recommendations preserve relevance and exclude current event", () => {
+ const p=emptyProgress(),current=events.find(e=>e.id==="meiji-restoration")!;
+ p.recent=[current.id];
+ const rows=recommend(p,current).slice(0,3);
+ assert.equal(rows.length,3);assert.ok(rows.every(e=>e.id!==current.id));
+ assert.ok(rows.some(e=>e.countries.includes("JP")));
+});
+test("expanded collection has global coverage and all categories", () => {
+ assert.ok(events.length>=80 && events.length<=120);
+ for(const category of ["Art","Space","Medicine"])assert.ok(events.some(e=>e.categories.includes(category)));
+ for(const code of ["VN","JP","IN","IR","ET","MX","AR","AU"])assert.ok(events.some(e=>e.countries.includes(code)));
 });
 

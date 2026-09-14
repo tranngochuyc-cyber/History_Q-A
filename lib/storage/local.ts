@@ -48,6 +48,7 @@ function validGame(v: unknown): v is GameSession {
       "QUESTION_RESULT",
       "GAME_COMPLETE",
     ].includes(String(v.phase)) &&
+    (v.hintQuestionIds === undefined || (strings(v.hintQuestionIds) && v.hintQuestionIds.every(id => questionIds.has(id)))) &&
     typeof v.round === "number" &&
     v.round >= 1 &&
     v.round <= v.settings.rounds &&
@@ -75,6 +76,8 @@ export function parseProgress(raw: string): Progress | null {
     if (
       !object(p) ||
       p.version !== 1 ||
+      (p.bookmarks !== undefined && (!strings(p.bookmarks) || !p.bookmarks.every(id => eventIds.has(id)))) ||
+      (p.recent !== undefined && (!strings(p.recent) || !p.recent.every(id => eventIds.has(id)))) ||
       !Array.isArray(p.answers) ||
       !p.answers.every(validAnswer) ||
       !Array.isArray(p.games) ||
@@ -85,7 +88,7 @@ export function parseProgress(raw: string): Progress | null {
       (p.active !== null && !validGame(p.active))
     )
       return null;
-    return p as unknown as Progress;
+    return { ...p, bookmarks: p.bookmarks ?? [], recent: p.recent ?? [] } as unknown as Progress;
   } catch {
     return null;
   }
@@ -151,6 +154,10 @@ export function mergeProgress(local: Progress, remote: Progress): Progress {
     answers,
     games,
     discovered: [...new Set([...remote.discovered, ...local.discovered])],
+    bookmarks: [...new Set([...(remote.bookmarks ?? []), ...(local.bookmarks ?? [])])],
+    recent: [...new Set([...(local.recent ?? []), ...(remote.recent ?? [])])].slice(0, 20),
     active: local.active ?? remote.active,
   };
 }
+
+

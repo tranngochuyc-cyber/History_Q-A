@@ -1,4 +1,6 @@
 import Link from "next/link";
+import { HomeDiscovery } from "@/components/home-discovery";
+import { vi } from "@/lib/i18n";
 import { ArrowRight, ArrowUpRight } from "lucide-react";
 import { EventCard } from "@/components/event/event-card";
 import { HeroRotation } from "@/components/hero-rotation";
@@ -30,6 +32,7 @@ export default function Home() {
         </div>
         <HeroRotation />
       </section>
+      <HomeDiscovery />
       <section className="section home-event-preview">
         <div className="section-heading">
           <div>
@@ -48,20 +51,8 @@ export default function Home() {
           )}
         </div>
       </section>
-      <section className="section home-discovery">
-        <div className="eyebrow">CÁCH KHÁM PHÁ</div>
-        <h2>Mỗi lượt chơi là một hành trình khác.</h2>
-        <ol className="discovery-steps">
-          {[
-            ["CHỌN PHẠM VI", "Chọn quốc gia, khu vực, thời kỳ hoặc chủ đề bạn muốn khám phá."],
-            ["NHẬN 3 SỰ KIỆN", "ChronoQuest chọn ngẫu nhiên ba sự kiện phù hợp."],
-            ["KHÁM PHÁ & TRẢ LỜI", "Chọn một sự kiện, đọc câu chuyện và thử kiến thức của bạn."],
-            ["TIẾP TỤC HÀNH TRÌNH", "Ghi điểm, mở khóa lịch sử và bước sang vòng tiếp theo."],
-          ].map(([title, description], index) => (
-            <li key={title}><span className="step-number">0{index + 1}</span><h3>{title}</h3><p>{description}</p></li>
-          ))}
-        </ol>
-      </section>
+
+      <section className="section topic-discovery"><div className="eyebrow">KHÁM PHÁ THEO CHỦ ĐỀ</div><h2>Một chủ đề, nhiều góc nhìn.</h2><div className="topic-tiles">{["War","Science","Revolution","Culture","Space","Technology"].map(c=><Link key={c} href={"/archive?category="+encodeURIComponent(c)}><strong>{vi(c)}</strong><span>{events.filter(e=>e.categories.includes(c)).length} sự kiện →</span></Link>)}</div></section>
       <section className="section home-eras">
         <div className="eyebrow">KHÁM PHÁ QUA THỜI ĐẠI</div>
         <h2>Từ thế giới cổ đại đến thời đại hiện đại.</h2>
@@ -77,20 +68,20 @@ export default function Home() {
           ))}
         </div>
       </section>
-      <section className="section home-perspective">
-        <div>
-          <h2>Không chỉ là nhớ ngày tháng.</h2>
-          <p className="perspective-intro">ChronoQuest không chỉ hỏi “sự kiện xảy ra khi nào”. Mỗi lượt chơi giúp bạn kết nối con người, địa điểm, nguyên nhân và hệ quả của những khoảnh khắc lịch sử.</p>
-        </div>
-        <div className="perspective-points">
+
+      <section className="section home-discovery">
+        <div className="eyebrow">CÁCH KHÁM PHÁ</div>
+        <h2>Mỗi lượt chơi là một hành trình khác.</h2>
+        <ol className="discovery-steps">
           {[
-            ["KHÁM PHÁ", "Tiếp cận lịch sử từ những sự kiện bạn thực sự tò mò."],
-            ["HIỂU BỐI CẢNH", "Mỗi câu hỏi đi kèm giải thích thay vì chỉ báo đúng hoặc sai."],
-            ["MỞ RỘNG GÓC NHÌN", "Khám phá sự kiện từ nhiều quốc gia, thời kỳ và chủ đề khác nhau."],
-          ].map(([title, description]) => (
-            <div key={title}><h3>{title}</h3><p>{description}</p></div>
+            ["CHỌN PHẠM VI", "Chọn quốc gia, khu vực, thời kỳ hoặc chủ đề bạn muốn khám phá."],
+            ["NHẬN 3 SỰ KIỆN", "ChronoQuest chọn ngẫu nhiên ba sự kiện phù hợp."],
+            ["KHÁM PHÁ & TRẢ LỜI", "Chọn một sự kiện, đọc câu chuyện và thử kiến thức của bạn."],
+            ["TIẾP TỤC HÀNH TRÌNH", "Ghi điểm, mở khóa lịch sử và bước sang vòng tiếp theo."],
+          ].map(([title, description], index) => (
+            <li key={title}><span className="step-number">0{index + 1}</span><h3>{title}</h3><p>{description}</p></li>
           ))}
-        </div>
+        </ol>
       </section>
       <section className="section home-archive-summary">
         <div>
@@ -112,4 +103,6 @@ export default function Home() {
     </main>
   );
 }
+
+
 

@@ -1,6 +1,9 @@
 "use client";
 import { vi } from "@/lib/i18n";
 import Link from "next/link";
+import { useEffect } from "react";
+import { BookmarkButton } from "../bookmark-button";
+import { recommend } from "@/lib/discovery";
 import {
   ArrowLeft,
   ArrowUpRight,
@@ -14,9 +17,11 @@ import { useProgress } from "../providers";
 import { mastery } from "@/lib/game/progress";
 import { EventImage, EventMeta, EventCard } from "./event-card";
 export function EventDetail({ event }: { event: HistoricalEvent }) {
-  const { data } = useProgress(),
+  const { data, update } = useProgress(),
     progress = mastery(data.answers, event.id),
     discovered = data.discovered.includes(event.id);
+  useEffect(() => { update(p => p.recent?.[0] === event.id ? p : { ...p, recent: [event.id, ...(p.recent ?? []).filter(id => id !== event.id)].slice(0, 20) }); }, [event.id, update]);
+  const suggestions = recommend(data, event).slice(0,3);
   return (
     <>
       <Link className="text-link back-link" href="/archive">
@@ -29,7 +34,7 @@ export function EventDetail({ event }: { event: HistoricalEvent }) {
           </div>
           <h1>{event.title}</h1>
           <EventMeta event={event} />
-          <p>{event.shortSummary}</p>
+          <p>{event.shortSummary}</p><BookmarkButton id={event.id} />
           <div className="chips">
             {event.categories.map((c) => (
               <span className="tag" key={vi(c)}>
@@ -55,8 +60,9 @@ export function EventDetail({ event }: { event: HistoricalEvent }) {
         <article>
           {[
             ["Bối cảnh", event.causes],
-            ["Diễn biến", event.whatHappened],
-            ["Tác động", event.consequences],
+            ["Chuyện gì đã xảy ra?", event.whatHappened],
+            ["Kết quả", event.consequences],
+            ["Vì sao sự kiện này quan trọng?", event.significance ?? event.consequences],
           ].map(([title, text]) => (
             <section key={title}>
               <div className="eyebrow">{title.toUpperCase()}</div>
@@ -64,6 +70,7 @@ export function EventDetail({ event }: { event: HistoricalEvent }) {
               <p>{text}</p>
             </section>
           ))}
+          {event.fact && <aside className="history-fact"><h3>Có thể bạn chưa biết</h3><p>{event.fact}</p></aside>}
           <section className="sources">
             <h2>Tìm hiểu từ nguồn tư liệu.</h2>
             <p>Đọc thêm và tìm hiểu bối cảnh của từng nguồn tư liệu.</p>
@@ -82,7 +89,7 @@ export function EventDetail({ event }: { event: HistoricalEvent }) {
         <aside className="record-sidebar">
           <div className="eyebrow">CHI TIẾT SỰ KIỆN</div>
           <dl>
-            <dt>Niên đại</dt>
+            <dt>{event.tags.includes("approximate") ? "Niên đại ước tính" : "Niên đại"}</dt>
             <dd>
               {event.id === "great-wave"
                 ? "Khoảng 1830–1832"
@@ -131,17 +138,16 @@ export function EventDetail({ event }: { event: HistoricalEvent }) {
           </div>
         </aside>
       </div>
+      <section className="related-timeline"><div className="eyebrow">SỰ KIỆN LIÊN QUAN</div><ol>{event.relatedEvents.map(id=>events.find(e=>e.id===id)).filter((e):e is HistoricalEvent=>!!e).sort((a,b)=>a.startYear-b.startYear).map(e=><li key={e.id}><Link href={"/event/"+e.slug}><span>{formatYear(e.startYear)}</span><strong>{e.title}</strong></Link></li>)}</ol></section>
       <section className="related-section">
         <div className="section-heading">
           <div>
-            <div className="eyebrow">NHỮNG CÂU CHUYỆN LIÊN QUAN</div>
+            <div className="eyebrow">CÓ THỂ BẠN SẼ THÍCH</div>
             <h2>Lịch sử luôn có những mối liên hệ.</h2>
           </div>
         </div>
         <div className="event-grid">
-          {event.relatedEvents
-            .map((id) => events.find((e) => e.id === id))
-            .filter((e): e is HistoricalEvent => !!e)
+          {suggestions
             .map((e) => (
               <EventCard
                 key={e.id}
@@ -154,3 +160,5 @@ export function EventDetail({ event }: { event: HistoricalEvent }) {
     </>
   );
 }
+
+

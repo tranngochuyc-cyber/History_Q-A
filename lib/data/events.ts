@@ -1,5 +1,6 @@
 import type { HistoricalEvent, Question } from "../types";
 import imageCatalog from "./image-catalog.json";
+import extraSeeds from "./extra-seeds.json";
 type Seed = {
   id: string;
   title: string;
@@ -21,6 +22,7 @@ type Seed = {
   source: string;
   publisher?: string;
   tags?: string[];
+  significance?: string;
 };
 const seeds: Seed[] = [
   {
@@ -923,6 +925,8 @@ const seeds: Seed[] = [
     publisher: "National Museum of Australia",
   },
 ];
+seeds.push(...extraSeeds);
+const extraIds = new Set(extraSeeds.map(s => s.id));
 const images: Record<
   string,
   { url: string; alt: string; credit: string; source: string }
@@ -938,6 +942,8 @@ export const events: HistoricalEvent[] = seeds.map((s, i) => ({
   summary: [s.causes, s.happened, s.consequences].join(" "),
   shortSummary: s.teaser,
   importance: 4,
+  significance: s.significance,
+  fact: s.id === "web" ? "Web và Internet không phải cùng một thứ: Web là một dịch vụ chạy trên hạ tầng Internet." : undefined,
   scale:
     s.countries.length >= 3
       ? "Global"
@@ -979,7 +985,7 @@ export const events: HistoricalEvent[] = seeds.map((s, i) => ({
     },
   ],
   relatedEvents: [],
-  tags: s.tags ?? [],
+  tags: [...(s.tags ?? []), ...(["angkor-wat","hammurabi","persepolis","athenian-democracy","gutenberg"].includes(s.id) ? ["approximate"] : [])],
 }));
 for (const event of events) {
   event.relatedEvents = events
@@ -1045,14 +1051,16 @@ export const questions: Question[] = seeds.flatMap((s) => {
       answer: "0",
       explanation: `${s.title} ${s.end ? "bắt đầu" : "diễn ra"} vào năm ${formatYear(s.year)}. ${s.consequences}`,
     });
-  return questionList;
+  return extraIds.has(s.id) ? questionList.filter(q => !q.id.endsWith(["angkor-wat","hammurabi","persepolis","athenian-democracy","gutenberg"].includes(s.id) ? "-year" : "-tf")) : questionList;
 });
 export function formatYear(year: number) {
   return year < 0 ? `${Math.abs(year)} TCN` : String(year);
 }
 export function formatEventYear(event: HistoricalEvent) {
-  return `${event.id === "great-wave" ? "Khoảng " : ""}${formatYear(event.startYear)}`;
+  return `${event.id === "great-wave" || event.tags.includes("approximate") ? "Khoảng " : ""}${formatYear(event.startYear)}`;
 }
 export const eventById = (id: string) => events.find((e) => e.id === id)!;
+
+
 
 

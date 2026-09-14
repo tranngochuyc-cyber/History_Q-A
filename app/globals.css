@@ -3773,3 +3773,82 @@ html, body { }
   .quiz-panel .answer-options button, .points-pop, .score-bounce, .quiz-layout .question-result { animation: none; transition: none; }
 }
  .quiz-panel, .quiz-layout .question-result { background: var(--panel); }
+/* Discovery surfaces; game layout remains independent. */
+.search-launch { display: grid; place-items: center; width: 42px; height: 42px; flex: 0 0 42px; border: 1px solid #64808b; border-radius: 50%; background: transparent; color: #c4e0dc; }
+.global-search { width: min(680px,calc(100vw - 32px)); max-height: 85dvh; margin: auto; padding: 24px; border: 1px solid var(--line); border-radius: 18px; background: var(--panel); color: var(--text); }
+.global-search::backdrop { background: #132531bb; backdrop-filter: blur(4px); }
+.search-dialog-top { display: flex; gap: 12px; align-items: center; margin-bottom: 24px; }
+.search-dialog-top .search-box { flex: 1; min-width: 0; }
+.search-dialog-top > button { border: 0; background: transparent; padding: 10px; }
+.global-search h3 { font-size: 12px; margin-bottom: 14px; }
+.global-search > .text-link { display: inline-block; margin-top: 20px; }
+.search-results { padding: 0; list-style: none; margin: 0; }
+.search-results a { display: grid; gap: 4px; padding: 14px 8px; border-bottom: 1px solid var(--line); }
+.search-results a:hover { background: var(--panel2); }
+.search-results span { color: var(--muted); font-size: 13px; }
+.discovery-card { min-width: 0; position: relative; }
+.discovery-card > .event-card { height: 100%; display: flex; flex-direction: column; }
+.discovery-card .event-card-body { flex: 1; }
+.bookmark-button { display: inline-flex; align-items: center; justify-content: center; gap: 7px; min-height: 40px; border-radius: 22px; padding: 8px 12px; border: 1px solid #799995; background: #f0f4eb; color: #244b4e; font-size: 13px; }
+.discovery-card > .bookmark-button { position: absolute; right: 12px; top: 12px; z-index: 2; }
+.discovery-card .event-image img { transition: transform .25s ease-out; }
+.discovery-card:hover .event-image img { transform: scale(1.025); }
+.discovery-card:hover .event-card { border-color: #598f91; }
+.bookmark-button[aria-pressed="true"] { background: #c8e2d8; color: #1e5551; }
+.event-rail { display: grid; grid-auto-flow: column; grid-auto-columns: minmax(260px,31%); gap: 22px; overflow-x: auto; padding: 3px 3px 20px; scroll-snap-type: x proximity; }
+.event-rail > * { scroll-snap-align: start; }
+.event-rail .event-image { height: 220px; }
+.recent-history { display: grid; grid-template-columns: repeat(4,minmax(0,1fr)); gap: 18px; margin-top: 18px; }
+.recent-history a { display: grid; gap: 8px; border-left: 2px solid #82aaa4; padding: 8px 16px; }
+.recent-history span, .recent-history small { color: var(--muted); font-size: 12px; }
+.topic-tiles { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 16px; margin-top: 26px; }
+.topic-tiles a { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 25px 20px; border: 1px solid #a8bab4; border-radius: 14px; background: #dde8e2; }
+.topic-tiles a:nth-child(2n) { background: #e1e5eb; }
+.topic-tiles a:nth-child(3n) { background: #e9e4d7; }
+.topic-tiles span { color: #4b666a; font-size: 13px; }
+.topic-tiles a:hover { border-color: #447e7c; transform: translateY(-2px); }
+.archive-toolbar { position: sticky; top: 0; z-index: 5; background: var(--bg); padding: 14px 0; }
+.archive-toolbar .search-box { flex: 1; }
+.archive-tabs { gap: 18px; flex-wrap: wrap; }
+.archive-tabs select { padding: 8px; border: 1px solid var(--line); border-radius: 20px; }
+.archive-result-count { display: flex; justify-content: space-between; margin: 14px 0 24px; color: var(--muted); }
+.archive-filter-panel { border: 1px solid var(--line); border-radius: 16px; padding: 20px; }
+.search-suggestions { margin: 8px 0 22px; }
+.active-discovery-filters { margin: 12px 0; }
+.detail-hero .bookmark-button { margin-top: 18px; }
+.detail-layout article > section { padding: 28px 0; border-bottom: 1px solid var(--line); }
+.detail-layout article h2 { font-size: clamp(24px,2.5vw,32px); margin-bottom: 16px; }
+.history-fact { padding: 24px; background: #dfe9e0; border-left: 3px solid #598b7c; border-radius: 8px; margin: 22px 0; }
+.history-fact h3 { margin-bottom: 12px; }
+.related-timeline { margin: 40px 0; }
+.related-timeline ol { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 20px; list-style: none; padding: 0; margin-top: 20px; }
+.related-timeline a { display: grid; gap: 8px; padding-top: 16px; border-top: 2px solid #94ada7; }
+.related-timeline span { color: var(--muted); font-size: 13px; }
+.stats-insights { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 24px; margin: 30px 0; }
+.stats-insights h2 { font-size: 28px; margin-bottom: 20px; }
+.exploration-gap { display: grid; grid-template-columns: 1fr auto; gap: 8px; margin-top: 20px; }
+.exploration-gap .progress-track { grid-column: 1/-1; }
+.dashboard-stats > div { border: 1px solid var(--line); border-radius: 14px; background: var(--panel); }
+.quiz-hint { margin-top: 18px; font-size: 13px; min-height: 40px; }
+@media(max-width:900px) {
+ .navbar { gap: 14px; }
+ .navbar .nav-cta { display: none; }
+ .recent-history, .topic-tiles { grid-template-columns: repeat(2,minmax(0,1fr)); }
+}
+@media(max-width:600px) {
+ .navbar { flex-wrap: wrap; height: auto; min-height: 100px; padding: 12px 18px; }
+ .navbar .brand { flex: 1; }
+ .navbar nav { order: 3; width: 100%; justify-content: space-between; }
+ .search-launch { width: 38px; height: 38px; flex-basis: 38px; }
+ .event-rail { grid-auto-columns: 85%; gap: 14px; }
+ .recent-history, .related-timeline ol, .stats-insights { grid-template-columns: 1fr; }
+ .topic-tiles { grid-template-columns: 1fr; }
+ .archive-toolbar { flex-wrap: wrap; position: static; }
+ .archive-toolbar .search-box { flex-basis: 100%; }
+ .global-search { padding: 18px; }
+ .search-dialog-top { gap: 4px; }
+}
+@media(prefers-reduced-motion:reduce) {
+ .discovery-card .event-image img { transition: none; }
+ .discovery-card:hover .event-image img, .topic-tiles a:hover { transform: none; }
+}

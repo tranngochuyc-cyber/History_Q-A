@@ -48,6 +48,7 @@ export function nextQuestion(
   )[0];
 }
 export type Action =
+  | { type: "HINT" }
   | { type: "SELECT"; eventId: string }
   | { type: "CONTINUE" }
   | { type: "ANSWER"; value: string | number | boolean }
@@ -56,6 +57,7 @@ export function transition(progress: Progress, action: Action): Progress {
   const game = progress.active;
   if (!game) return progress;
   let next: GameSession = { ...game };
+  if (action.type === "HINT" && game.phase === "QUESTION" && game.questionId && !(game.hintQuestionIds ?? []).includes(game.questionId)) return { ...progress, active: { ...game, hintQuestionIds: [...(game.hintQuestionIds ?? []), game.questionId] } };
   if (
     action.type === "SELECT" &&
     game.phase === "SELECT_EVENT" &&
@@ -147,4 +149,5 @@ export function transition(progress: Progress, action: Action): Progress {
   } else return progress;
   return { ...progress, active: next };
 }
+
 
