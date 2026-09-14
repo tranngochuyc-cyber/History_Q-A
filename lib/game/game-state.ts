@@ -39,10 +39,7 @@ export function nextQuestion(
     session.answers.filter((a) => a.questionId === q.id).length;
   const min = Math.min(...qs.map(count));
   const eligible = qs.filter((q) => count(q) === min);
-  const preferredType = (["multiple-choice", "true-false", "year"] as const)[
-    (session.round - 1) % 3
-  ];
-  const preferred = eligible.find((q) => q.type === preferredType);
+  const preferred = eligible.find((q) => q.id === qs[(session.round - 1) % qs.length].id);
   if (preferred) return preferred;
   return [...eligible].sort(
     (a, b) =>
@@ -150,3 +147,4 @@ export function transition(progress: Progress, action: Action): Progress {
   } else return progress;
   return { ...progress, active: next };
 }
+

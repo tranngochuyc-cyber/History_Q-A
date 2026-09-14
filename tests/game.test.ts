@@ -28,7 +28,7 @@ test("seed integrity: diverse events, valid relations, sources and questions", (
   }
   assert.deepEqual(
     new Set(questions.map((q) => q.type)),
-    new Set(["multiple-choice", "true-false", "year"]),
+    new Set(["multiple-choice"]),
   );
 });
 test("filters combine groups with AND and values within groups with OR", () => {
@@ -75,7 +75,7 @@ test("scoring boundaries and streak reset semantics", () => {
     [0, 1, 5, 10, 25, 26].map((d) => yearPoints(1900 + d, 1900)),
     [100, 90, 70, 40, 20, 0],
   );
-  const q = questions.find((q) => q.type === "year")!;
+  const q = questions.find((q) => q.type === "multiple-choice")!;
   assert.equal(
     scoreAnswer({ ...q, difficulty: "Hard" }, q.answer, 3).points,
     180,
@@ -131,7 +131,7 @@ test("wrong answers reset streak", () => {
   p = transition(p, { type: "CONTINUE" });
   p = transition(p, {
     type: "ANSWER",
-    value: !questions.find((q) => q.id === p.active!.questionId)!.answer,
+    value: "1",
   });
   assert.equal(p.active!.streak, 0);
 });
@@ -144,3 +144,17 @@ test("corrupt storage is rejected; merge deduplicates answers", () => {
   const p = emptyProgress();
   assert.deepEqual(mergeProgress(p, p), p);
 });
+
+test("every question has four unique choices and one valid answer", () => {
+  for (const q of questions) {
+    assert.equal(q.type, "multiple-choice");
+    if (q.type !== "multiple-choice") continue;
+    assert.equal(q.options.length, 4, q.id);
+    assert.equal(new Set(q.options.map(o => o.text)).size, 4, q.id);
+    assert.equal(q.options.filter(o => o.id === q.answer).length, 1, q.id);
+    for (const option of q.options) {
+      assert.equal(scoreAnswer(q, option.id, 0).correct, option.id === q.answer);
+    }
+  }
+});
+

@@ -1026,19 +1026,23 @@ export const questions: Question[] = seeds.flatMap((s) => {
     {
       ...base,
       id: `${s.id}-tf`,
-      type: "true-false",
-      prompt: s.statement,
-      answer: s.truth,
-      explanation: `${s.truth ? "Đúng." : "Sai."} ${s.happened} ${s.consequences}`,
+      type: "multiple-choice",
+      prompt: "Địa điểm nào gắn với sự kiện này?",
+      options: [s.location, ...[...new Set(seeds.map((other) => other.location))].filter((location) => location !== s.location).slice(0, 3)].map((text, i) => ({ id: String(i), text })),
+      answer: "0",
+      explanation: `${s.title} gắn với ${s.location}. ${s.happened}`,
     },
   ];
   if (s.id !== "great-wave")
     questionList.push({
       ...base,
       id: `${s.id}-year`,
-      type: "year",
+      type: "multiple-choice",
       prompt: `Sự kiện này ${s.end ? "bắt đầu" : "diễn ra"} vào năm nào?`,
-      answer: s.year,
+      options: [s.year, s.year - 12, s.year + 7, s.year + 23].map((year, i) => ({
+        id: String(i), text: formatYear(year === 0 ? 1 : year),
+      })),
+      answer: "0",
       explanation: `${s.title} ${s.end ? "bắt đầu" : "diễn ra"} vào năm ${formatYear(s.year)}. ${s.consequences}`,
     });
   return questionList;
@@ -1050,3 +1054,5 @@ export function formatEventYear(event: HistoricalEvent) {
   return `${event.id === "great-wave" ? "Khoảng " : ""}${formatYear(event.startYear)}`;
 }
 export const eventById = (id: string) => events.find((e) => e.id === id)!;
+
+

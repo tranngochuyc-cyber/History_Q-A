@@ -43,7 +43,7 @@ export function Game() {
   const event = game.selected ? eventById(game.selected) : null,
     q = questions.find((q) => q.id === game.questionId),
     answer = game.answers.at(-1),
-    hideYear = q?.type === "year";
+    hideYear = q?.id.endsWith("-year");
   return (
     <>
       <div className="game-top">
@@ -101,7 +101,7 @@ export function Game() {
               <EventCard
                 key={id}
                 event={eventById(id)}
-                hideYear={nextQuestion(id, game, data.answers).type === "year"}
+                hideYear={nextQuestion(id, game, data.answers).id.endsWith("-year")}
                 discovered={data.discovered.includes(id)}
                 onSelect={() => dispatch({ type: "SELECT", eventId: id })}
               />
@@ -128,7 +128,7 @@ export function Game() {
               {event.title}
             </h1>
           </div>
-          <div className="brief-layout">
+          <div className={game.phase === "QUESTION" ? "brief-layout quiz-layout" : "brief-layout"}>
             <aside className="brief-visual">
               <EventImage
                 event={event}
@@ -243,3 +243,4 @@ export function Game() {
     </>
   );
 }
+
