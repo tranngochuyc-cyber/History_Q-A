@@ -22,7 +22,7 @@ export function Game() {
     game = data.active,
     heading = useRef<HTMLHeadingElement>(null);
   useEffect(() => {
-    heading.current?.focus();
+    if (game?.phase !== "QUESTION_RESULT") heading.current?.focus();
   }, [game?.phase, game?.round]);
   if (!ready)
     return (
@@ -62,7 +62,7 @@ export function Game() {
         </div>
         <div>
           <span className="eyebrow">ĐIỂM</span>
-          <strong aria-live="polite">
+          <strong aria-live="polite" key={game.score} className="score-bounce">
             {game.score.toLocaleString("vi-VN")}
           </strong>
         </div>
@@ -128,7 +128,7 @@ export function Game() {
               {event.title}
             </h1>
           </div>
-          <div className={game.phase === "QUESTION" ? "brief-layout quiz-layout" : "brief-layout"}>
+          <div className={game.phase !== "EVENT_BRIEF" ? "brief-layout quiz-layout" : "brief-layout"}>
             <aside className="brief-visual">
               <EventImage
                 event={event}
@@ -183,6 +183,8 @@ export function Game() {
                   onAnswer={(value) => dispatch({ type: "ANSWER", value })}
                 />
               ) : answer ? (
+                <>
+                <QuizRenderer question={q} result={answer} onAnswer={() => {}} />
                 <div
                   className={`question-result reveal ${answer.correct ? "correct" : "incorrect"}`}
                   role="status"
@@ -228,6 +230,7 @@ export function Game() {
                     <ArrowRight size={18} />
                   </button>
                 </div>
+                </>
               ) : null}
             </div>
           </div>
@@ -243,4 +246,6 @@ export function Game() {
     </>
   );
 }
+
+
 
